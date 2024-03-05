@@ -1,0 +1,1132 @@
+site	focal_species	patch	year	date	recorder	writer	individual	species	number	notes										
+Oerup	Dactylorhiza_majalis	O1	2022	23.5.2022	AS	RD	101	Dactylorhiza_majalis	0	NA										
+Oerup	Dactylorhiza_majalis	O1	2022	23.5.2022	AS	RD	102	Dactylorhiza_majalis	3	NA										
+Oerup	Dactylorhiza_majalis	O1	2022	23.5.2022	AS	RD	103	Dactylorhiza_majalis	0	NA										
+Oerup	Dactylorhiza_majalis	O1	2022	23.5.2022	AS	RD	104	Dactylorhiza_majalis	2	NA										
+Oerup	Dactylorhiza_majalis	O1	2022	23.5.2022	AS	RD	105	Dactylorhiza_majalis	0	NA										
+Oerup	Dactylorhiza_majalis	O1	2022	23.5.2022	AS	RD	106	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	O1	2022	23.5.2022	AS	RD	107	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	O1	2022	23.5.2022	AS	RD	108	Dactylorhiza_majalis	0	NA										
+Oerup	Dactylorhiza_majalis	O1	2022	23.5.2022	AS	RD	109	Dactylorhiza_majalis	0	NA										
+Oerup	Dactylorhiza_majalis	O1	2022	23.5.2022	AS	RD	110	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	O1	2022	23.5.2022	AS	RD	111	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	O1	2022	23.5.2022	AS	RD	112	Dactylorhiza_majalis	0	NA										
+Oerup	Dactylorhiza_majalis	O1	2022	23.5.2022	AS	RD	113	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	O1	2022	23.5.2022	AS	RD	114	Dactylorhiza_majalis	0	NA										
+Oerup	Dactylorhiza_majalis	O1	2022	23.5.2022	AS	RD	115	Dactylorhiza_majalis	2	NA										
+Oerup	Dactylorhiza_majalis	O2	2022	23.5.2022	AS	RD	116	Dactylorhiza_majalis	0	NA										
+Oerup	Dactylorhiza_majalis	O2	2022	23.5.2022	AS	RD	117	Dactylorhiza_majalis	3	NA										
+Oerup	Dactylorhiza_majalis	O2	2022	23.5.2022	AS	RD	118	Dactylorhiza_majalis	0	NA										
+Oerup	Dactylorhiza_majalis	O2	2022	23.5.2022	AS	RD	119	Dactylorhiza_majalis	3	NA										
+Oerup	Dactylorhiza_majalis	O2	2022	23.5.2022	AS	RD	119	Caltha_palustris	5	NA										
+Oerup	Dactylorhiza_majalis	O2	2022	23.5.2022	AS	RD	119	Cardamine_pratensis	1	NA										
+Oerup	Dactylorhiza_majalis	O2	2022	23.5.2022	AS	RD	120	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	O2	2022	23.5.2022	AS	RD	121	Dactylorhiza_majalis	2	NA										
+Oerup	Dactylorhiza_majalis	O2	2022	23.5.2022	AS	RD	121	Caltha_palustris	3	NA										
+Oerup	Dactylorhiza_majalis	O2	2022	23.5.2022	AS	RD	121	Cardamine_pratensis	1	NA										
+Oerup	Dactylorhiza_majalis	O2	2022	23.5.2022	AS	RD	121	Ranunculus_acris	2	NA										
+Oerup	Dactylorhiza_majalis	O2	2022	23.5.2022	AS	RD	122	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	O2	2022	23.5.2022	AS	RD	122	Ranunculus_acris	1	NA										
+Oerup	Dactylorhiza_majalis	O2	2022	23.5.2022	AS	RD	123	Dactylorhiza_majalis	6	NA										
+Oerup	Dactylorhiza_majalis	O2	2022	23.5.2022	AS	RD	123	Valeriana_dioica	1	NA										
+Oerup	Dactylorhiza_majalis	O2	2022	23.5.2022	AS	RD	124	Dactylorhiza_majalis	6	NA										
+Oerup	Dactylorhiza_majalis	O2	2022	23.5.2022	AS	RD	124	Valeriana_dioica	1	NA										
+Oerup	Dactylorhiza_majalis	O2	2022	23.5.2022	AS	RD	125	Dactylorhiza_majalis	6	NA										
+Oerup	Dactylorhiza_majalis	O2	2022	23.5.2022	AS	RD	125	Valeriana_dioica	1	NA										
+Oerup	Dactylorhiza_majalis	O3	2022	23.5.2022	AS	RD	126	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	O3	2022	23.5.2022	AS	RD	126	Primula_farinosa	2	NA										
+Oerup	Dactylorhiza_majalis	O3	2022	23.5.2022	AS	RD	127	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	O3	2022	23.5.2022	AS	RD	127	Primula_farinosa	2	NA										
+Oerup	Dactylorhiza_majalis	O3	2022	23.5.2022	AS	RD	128	Dactylorhiza_majalis	0	NA										
+Oerup	Dactylorhiza_majalis	O3	2022	23.5.2022	AS	RD	129	Dactylorhiza_majalis	3	NA										
+Oerup	Dactylorhiza_majalis	O3	2022	23.5.2022	AS	RD	129	Primula_farinosa	1	NA										
+Oerup	Dactylorhiza_majalis	O3	2022	23.5.2022	AS	RD	129	Pinguicula_vulgaris	1	NA										
+Oerup	Dactylorhiza_majalis	O3	2022	23.5.2022	AS	RD	130	Cardamine_pratensis	1	NA										
+Oerup	Dactylorhiza_majalis	O4	2022	23.5.2022	AS	RD	131	Pinguicula_vulgaris	2	NA										
+Oerup	Dactylorhiza_majalis	O4	2022	23.5.2022	AS	RD	131	Potentilla_erecta	1	NA										
+Oerup	Dactylorhiza_majalis	O4	2022	23.5.2022	AS	RD	132	Primula_farinosa	3	NA										
+Oerup	Dactylorhiza_majalis	O4	2022	23.5.2022	AS	RD	132	Pinguicula_vulgaris	1	NA										
+Oerup	Dactylorhiza_majalis	O4	2022	23.5.2022	AS	RD	133	Primula_farinosa	5	NA										
+Oerup	Dactylorhiza_majalis	O4	2022	23.5.2022	AS	RD	134	Primula_farinosa	1	NA										
+Oerup	Dactylorhiza_majalis	O4	2022	23.5.2022	AS	RD	134	Pinguicula_vulgaris	4	NA										
+Oerup	Dactylorhiza_majalis	O4	2022	23.5.2022	AS	RD	135	Primula_farinosa	1	NA										
+Oerup	Dactylorhiza_majalis	O4	2022	23.5.2022	AS	RD	135	Pinguicula_vulgaris	1	NA										
+Oerup	Dactylorhiza_majalis	O4	2022	23.5.2022	AS	RD	136	Primula_farinosa	3	NA										
+Oerup	Dactylorhiza_majalis	O4	2022	23.5.2022	AS	RD	136	Pinguicula_vulgaris	1	NA										
+Oerup	Dactylorhiza_majalis	O4	2022	23.5.2022	AS	RD	137	Primula_farinosa	1	NA										
+Oerup	Dactylorhiza_majalis	O4	2022	23.5.2022	AS	RD	137	Pinguicula_vulgaris	2	NA										
+Oerup	Dactylorhiza_majalis	O4	2022	23.5.2022	AS	RD	138	Primula_farinosa	2	NA										
+Oerup	Dactylorhiza_majalis	O4	2022	23.5.2022	AS	RD	138	Pinguicula_vulgaris	2	NA										
+Oerup	Dactylorhiza_majalis	O4	2022	23.5.2022	AS	RD	139	Primula_farinosa	5	NA										
+Oerup	Dactylorhiza_majalis	O4	2022	23.5.2022	AS	RD	140	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	O4	2022	23.5.2022	AS	RD	140	Primula_farinosa	5	NA										
+Oerup	Dactylorhiza_majalis	O4	2022	23.5.2022	AS	RD	140	Pinguicula_vulgaris	1	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	141	Dactylorhiza_majalis	2	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	141	Valeriana_dioica	2	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	141	Primula_farinosa	2	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	142	Dactylorhiza_majalis	2	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	142	Valeriana_dioica	3	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	142	Primula_farinosa	2	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	143	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	143	Valeriana_dioica	1	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	143	Primula_farinosa	3	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	144	Dactylorhiza_majalis	3	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	144	Primula_farinosa	2	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	145	Dactylorhiza_majalis	5	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	145	Valeriana_dioica	3	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	145	Primula_farinosa	1	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	146	Valeriana_dioica	11	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	147	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	147	Valeriana_dioica	6	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	147	Primula_farinosa	3	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	147	Pinguicula_vulgaris	1	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	147	Potentilla_erecta	2	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	148	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	148	Primula_farinosa	3	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	149	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	149	Primula_farinosa	1	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	149	Potentilla_erecta	2	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	150	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	150	Primula_farinosa	1	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	151	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	O5	2022	23.5.2022	AS	RD	151	Menyanthes_trifoliata	1	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	1	Dactylorhiza_majalis	0	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	2	Dactylorhiza_majalis	0	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	3	Dactylorhiza_majalis	0	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	4	Valeriana_dioica	3	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	5	Dactylorhiza_majalis	0	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	6	Valeriana_dioica	1	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	6	Dactylorhiza_majalis	2	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	7	Valeriana_dioica	1	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	8	Valeriana_dioica	1	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	8	Dactylorhiza_majalis	2	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	9	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	10	Dactylorhiza_majalis	0	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	11	Valeriana_dioica	1	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	11	Dactylorhiza_majalis	2	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	12	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	13	Dactylorhiza_majalis	3	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	14	Valeriana_dioica	1	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	14	Ranunculus_reptans	1	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	14	Ranunculus_acris	1	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	15	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	16	Valeriana_dioica	1	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	16	Dactylorhiza_majalis	2	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	17	Dactylorhiza_majalis	4	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	18	Valeriana_dioica	4	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	19	Valeriana_dioica	1	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	20	Dactylorhiza_majalis	0	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	22	Valeriana_dioica	1	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	22	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	23	Valeriana_dioica	1	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	23	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	24	Valeriana_dioica	1	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	24	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	25	Valeriana_dioica	1	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	25	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	26	Valeriana_dioica	2	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	27	Valeriana_dioica	2	NA										
+Oerup	Dactylorhiza_majalis	M1	2022	23.05.2022	JSJ	Mikael	28	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	29	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	30	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	31	Dactylorhiza_majalis	4	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	32	Dactylorhiza_majalis	3	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	33	Dactylorhiza_majalis	3	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	34	Dactylorhiza_majalis	4	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	35	Dactylorhiza_majalis	5	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	36	Dactylorhiza_majalis	3	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	37	Dactylorhiza_majalis	3	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	38	Dactylorhiza_majalis	0	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	39	Dactylorhiza_majalis	3	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	39	Ranunculus_reptans	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	39	Ranunculus_acris	7	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	40	Dactylorhiza_majalis	3	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	40	Ranunculus_reptans	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	40	Geum_rivale	9	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	41	Dactylorhiza_majalis	2	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	41	Ranunculus_acris	8	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	41	Geum_rivale	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	42	Dactylorhiza_majalis	3	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	42	Ranunculus_acris	4	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	42	Geum_rivale	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	43	Dactylorhiza_majalis	3	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	43	Ranunculus_acris	9	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	43	Geum_rivale	2	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	44	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	44	Ranunculus_acris	4	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	44	Geum_rivale	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	45	Ranunculus_acris	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	45	Geum_rivale	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	46	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	46	Ranunculus_acris	4	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	46	Geum_rivale	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	47	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	47	Ranunculus_acris	4	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	47	Geum_rivale	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	48	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	48	Ranunculus_acris	4	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	48	Geum_rivale	3	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	49	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	49	Ranunculus_acris	4	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	49	Geum_rivale	3	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	50	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	50	Ranunculus_acris	2	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	50	Glechoma_hederacea	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	51	Valeriana_dioica	3	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	51	Ranunculus_acris	8	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	51	Geum_rivale	4	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	52	Valeriana_dioica	6	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	52	Ranunculus_acris	2	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	52	Glechoma_hederacea	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	53	Valeriana_dioica	4	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	53	Ranunculus_acris	8	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	54	Valeriana_dioica	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	54	Ranunculus_acris	2	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	55	Valeriana_dioica	10	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	55	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	55	Ranunculus_acris	12	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	56	Valeriana_dioica	6	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	56	Dactylorhiza_majalis	3	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	56	Ranunculus_acris	8	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	57	Valeriana_dioica	2	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	57	Dactylorhiza_majalis	2	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	57	Ranunculus_acris	4	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	58	Valeriana_dioica	5	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	58	Dactylorhiza_majalis	2	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	58	Ranunculus_acris	2	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	59	Dactylorhiza_majalis	0	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	60	Valeriana_dioica	9	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	60	Ranunculus_acris	12	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	61	Valeriana_dioica	17	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	61	Dactylorhiza_majalis	2	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	61	Ranunculus_acris	2	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	62	Valeriana_dioica	11	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	62	Ranunculus_acris	6	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	63	Valeriana_dioica	4	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	63	Ranunculus_acris	6	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	63	Geum_rivale	2	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	63	Cardamine_pratensis	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	64	Valeriana_dioica	11	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	64	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	64	Ranunculus_acris	2	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	65	Valeriana_dioica	4	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	65	Dactylorhiza_majalis	1	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	66	Valeriana_dioica	10	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	66	Dactylorhiza_majalis	3	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	66	Ranunculus_acris	2	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	67	Valeriana_dioica	6	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	67	Dactylorhiza_majalis	4	NA										
+Oerup	Dactylorhiza_majalis	M2	2022	23.05.2022	JSJ	Mikael	67	Ranunculus_acris	2	NA										
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				

@@ -1,0 +1,463 @@
+---
+title: "Majalis_HMSC_conspecific_analyses"
+author: '"Yedra Garcia"'
+date: "2023-12-11"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(Hmsc)
+library(abind)
+library(mgcv)
+library(knitr)
+library(ggplot2)
+```
+
+Loading combined data with trait, fitness and co-flowering community information on D. majalis
+```{r}
+load(file= "analyses/alldata_maj.RData")
+
+indat= na.omit(all_mj)
+
+indat= indat %>%
+  filter(!Patch== "E")%>%
+  droplevels()##104 individuals
+
+names(indat)
+```
+The HMSC model:
+
+Define the response (pollination success)
+```{r}
+Y= cbind(indat$visits)
+head(Y)
+hist(Y)
+```
+
+Define the model predictors: first the standard covariates which are the traits plus the abundance of conspecifics
+(variable= Dactylorhiza_m3)
+```{r}
+XData= indat[, c(6:9, 12, 27)]
+head(XData)
+
+```
+#Select the animal pollinated co-flowering species
+
+```{r, echo=FALSE}
+names(indat)
+
+coflo_data= indat[, c(19:26, 28:30)]# co-flowering species
+XRRRData= coflo_data
+
+sort(colSums(XRRRData))
+
+XRRRData = XRRRData[,colSums(XRRRData>=1) >1]#without singletons= 8 species
+names(XRRRData)
+```
+
+Define the Xformula with the trait predictors and the abundance of conspecifics as predictors (= XData)
+```{r, echo=FALSE}
+XFormula = as.formula(paste("~", paste0(colnames(XData), collapse=" + ")))
+XFormula
+```
+
+Define the XRRRformula with the animal-pollinated species (= XRRRData) 
+
+```{r, echo= FALSE}
+XRRRFormula = as.formula(paste("~", " -1 + ", paste0(colnames(XRRRData), collapse=" + ")))
+XRRRFormula
+```
+
+#Scale the XRRRData (the animal-poll co-flowering community)
+```{r, echo=FALSE}
+XRRRDataScaled = data.frame(scale(XRRRData))
+dim(XRRRData)
+```
+
+#Set random effects:Defining Patch as a random factor in the model
+```{r, echo=FALSE}
+study.Design= data.frame(patch= indat$Patch)
+study.Design$patch= as.factor(study.Design$patch)
+
+head(study.Design)
+```
+
+Fit the HMSC models.In this case all models include Patch as a random factor
+
+Define Patch as random factor in the models
+```{r}
+rL = HmscRandomLevel(units = unique(study.Design$patch))
+```
+
+#HMSC with traits, conspecific abundance and the RRR of the animal-pollinated species as predictors (m)
+
+```{r, eval=FALSE}
+m = Hmsc(Y = as.matrix(Y/mean(Y)), XData=XData, XFormula=XFormula,
+         XRRRData=XRRRDataScaled, XRRRFormula=XRRRFormula, ncRRR=1, XRRRScale = TRUE,
+         studyDesign = study.Design, ranLevels = list("patch"= rL),  distr= "normal")
+m
+```
+
+#Set model sampling parameters
+```{r, eval=FALSE}
+samples = 1000
+thin = 100
+transient = .5*(thin*samples)
+adaptNf = 0.4*(thin*samples)
+nChains = 1
+
+m= sampleMcmc(m, samples = samples, thin = thin, adaptNf=rep(adaptNf, m$nr), 
+               transient = transient, nChains = nChains)
+
+save(m, file ="analyses/models_pollsuccess-conspecific_maj.RData")
+
+load(file = "analyses/models_pollsuccess-conspecific_maj.RData")
+```
+
+
+```{r, eval=FALSE}
+postm= convertToCodaObject(m, covNamesNumbers = c(T,F))
+
+effectiveSize(postm$Beta)
+
+pred= computePredictedValues(m)
+MF= evaluateModelFit(hM= m, predY = pred)
+MF#58.2
+```
+
+#Effective sample size for the random factor (patch)
+
+```{r, echo=FALSE}
+esOmega = effectiveSize(postm$Omega[[1]])
+summary(esOmega)
+```
+
+#Model convergence
+
+```{r, echo=FALSE}
+plot(post$Beta[,8])
+```
+
+# Temp. posterior of wRRR
+```{r}
+bind0 = function(...) {abind(..., along = 0)}
+postList = poolMcmcChains(m$postList, chainIndex = 1:length(m$postList), 
+                          start = 1, thin = 1)
+valList = lapply(postList, function(a) a[["wRRR"]])
+wRRR_post = do.call(bind0, valList)
+
+dim(wRRR_post)
+
+for(i in 1:8){
+  plot(wRRR_post[,1,i], type="l")
+}
+```
+
+Posterior support for each covariate including the RRR of the animal-pollinated coflowering community
+```{r}
+
+postm= convertToCodaObject(m, covNamesNumbers = c(T,F))
+effectiveSize(postm$Beta)
+summary(postm$Beta)
+
+getPostEstimate(m, "Beta")
+postsup= getPostEstimate(m, "Beta")$support[2:8, ]
+
+postsup[which(postsup<0.5)] = 1 - postsup[which(postsup<0.5)]
+postsup
+```
+
+#Obtain the selection gradients for the model
+
+```{r, echo=FALSE}
+nX = ncol(m$XData)
+nX
+
+#beta_raw_post = post$Beta[,2:(nX+1)][[1]] #posterior for betas
+beta_raw_post = postm$Beta[,2:(5+2)][[1]]
+head(beta_raw_post)
+
+beta_var_post = matrix(NA, nrow=nrow(beta_raw_post), ncol=nX)
+for(i in 1:nX){
+  beta_var_post[,i] = beta_raw_post[,i]*sd(XData[,i])
+}
+
+beta_mean_post = matrix(NA, nrow=nrow(beta_raw_post), ncol=nX)
+for(i in 1:nX){
+  beta_mean_post[,i] = beta_raw_post[,i]*mean(XData[,i])
+}
+
+beta_raw = apply(beta_raw_post, 2, mean)
+beta_raw_lower = apply(beta_raw_post, 2, quantile, c(0.025))
+beta_raw_upper = apply(beta_raw_post, 2, quantile, c(0.975))
+
+beta_var = apply(beta_var_post, 2, mean)
+beta_var_lower = apply(beta_var_post, 2, quantile, c(0.025))
+beta_var_upper = apply(beta_var_post, 2, quantile, c(0.975))
+
+beta_mean = apply(beta_mean_post, 2, mean)
+beta_mean_lower = apply(beta_mean_post, 2, quantile, c(0.025))
+beta_mean_upper = apply(beta_mean_post, 2, quantile, c(0.975))
+
+resmat_RRR = data.frame(beta_raw = round(beta_raw, 3),
+                        L = round(beta_raw_lower, 3),
+                        U = round(beta_raw_upper, 3),
+                        beta_var = round(beta_var, 3),
+                        L = round(beta_var_lower, 3),
+                        U = round(beta_var_upper, 3),
+                        beta_mean = round(beta_mean*100, 3),
+                        L = round(beta_mean_lower, 3),
+                        U = round(beta_mean_upper, 3))
+
+betaRRR = postm$Beta[,(nX+2):(m$ncRRR+(nX+1))][[1]] #posterior for beta_RRR
+#betaRRR = post$Beta[,(5+2):(m$ncRRR+(5+1))][[1]] #posterior for beta_RRR
+length(betaRRR)
+
+# The anim-pollinated co-flowering community axis"
+dim(m$XRRR)
+
+comp1_post = matrix(NA, nrow=length(betaRRR), ncol=m$ny)
+for(i in 1:length(betaRRR)){
+  comp1_post[i,]=m$XRRR %*% as.matrix((wRRR_post[i,1,]))
+}
+
+beta_comp1_post=NULL
+for(i in 1:1000){
+  beta_comp1_post[i]=betaRRR[i]*sd(comp1_post[i,])
+}
+
+resmat_RRR[nrow(resmat_RRR)+1,]=c("NA","NA","NA", 
+                 round(mean(beta_comp1_post), 3),
+                 round(quantile(beta_comp1_post, c(0.025)), 3),
+                 round(quantile(beta_comp1_post, c(0.975)), 3),
+                 "NA", "NA","NA")
+kable(resmat_RRR)
+```
+
+
+#For fruit-set
+
+```{r}
+
+load(file = "analyses/alldatafruit_maj.RData")
+
+indat= na.omit(all_mjf)
+
+indat= indat %>%
+  filter(!Patch== "E")%>%# 103 individuals with information on fruit number
+  droplevels()
+```
+
+Define the response (pollination success)
+```{r}
+Y= cbind(indat$fruit_number)
+head(Y)
+hist(Y)
+```
+
+Define the model predictors: first the standard covariates which are the traits plus the abundance of conspecifics
+(variable= Dactylorhiza_m3)
+```{r}
+names(indat)
+
+XData= indat[, c(6:8, 10, 21)]
+head(XData)
+
+```
+
+#Select the animal pollinated co-flowering species
+
+```{r, echo=FALSE}
+names(indat)
+
+coflo_data= indat[, c(13:20, 22:24)]# co-flowering species
+XRRRData= coflo_data
+
+sort(colSums(XRRRData))
+
+XRRRData = XRRRData[,colSums(XRRRData>=1) >1]#without singletons= 8 species
+names(XRRRData)
+```
+
+Define the Xformula with the trait predictors and the abundance of conspecifics as predictors (= XData)
+```{r, echo=FALSE}
+XFormula = as.formula(paste("~", paste0(colnames(XData), collapse=" + ")))
+XFormula
+```
+
+Define the XRRRformula with the animal-pollinated species (= XRRRData) 
+
+```{r, echo= FALSE}
+XRRRFormula = as.formula(paste("~", " -1 + ", paste0(colnames(XRRRData), collapse=" + ")))
+XRRRFormula
+```
+
+#Scale the XRRRData (the animal-poll co-flowering community)
+```{r, echo=FALSE}
+XRRRDataScaled = data.frame(scale(XRRRData))
+dim(XRRRData)
+```
+
+#Set random effects:Defining Patch as a random factor in the model
+```{r, echo=FALSE}
+study.Design= data.frame(patch= indat$Patch)
+study.Design$patch= as.factor(study.Design$patch)
+
+head(study.Design)
+```
+
+Fit the HMSC models.In this case all models include Patch as a random factor
+
+Define Patch as random factor in the models
+```{r}
+rL = HmscRandomLevel(units = unique(study.Design$patch))
+```
+
+#HMSC with traits, conspecific abundance and the RRR of the animal-pollinated species as predictors (m)
+
+```{r, eval=FALSE}
+m = Hmsc(Y = as.matrix(Y/mean(Y)), XData=XData, XFormula=XFormula,
+         XRRRData=XRRRDataScaled, XRRRFormula=XRRRFormula, ncRRR=1, XRRRScale = TRUE,
+         studyDesign = study.Design, ranLevels = list("patch"= rL),  distr= "normal")
+m
+```
+
+#Set model sampling parameters
+```{r, eval=FALSE}
+samples = 1000
+thin = 100
+transient = .5*(thin*samples)
+adaptNf = 0.4*(thin*samples)
+nChains = 1
+
+m= sampleMcmc(m, samples = samples, thin = thin, adaptNf=rep(adaptNf, m$nr), 
+               transient = transient, nChains = nChains)
+
+save(m, file ="analyses/models_fset-conspecific_maj.RData")
+
+#load(file = "analyses/models_fset-conspecific_maj.RData")
+```
+
+
+```{r, eval=FALSE}
+postm= convertToCodaObject(m, covNamesNumbers = c(T,F))
+
+effectiveSize(postm$Beta)
+
+pred= computePredictedValues(m)
+MF= evaluateModelFit(hM= m, predY = pred)
+MF#
+```
+
+
+```{r, eval=FALSE}
+#Effective sample size for the random factor (patch)
+
+esOmega = effectiveSize(postm$Omega[[1]])
+summary(esOmega)
+```
+
+#Model convergence
+
+```{r, echo=FALSE}
+plot(postm$Beta[,6])
+```
+
+# Temp. posterior of wRRR
+```{r}
+bind0 = function(...) {abind(..., along = 0)}
+postList = poolMcmcChains(m$postList, chainIndex = 1:length(m$postList), 
+                          start = 1, thin = 1)
+valList = lapply(postList, function(a) a[["wRRR"]])
+wRRR_post = do.call(bind0, valList)
+
+dim(wRRR_post)
+
+for(i in 1:8){
+  plot(wRRR_post[,1,i], type="l")
+}
+```
+
+Posterior support for each covariate including the RRR of the animal-pollinated coflowering community
+```{r}
+postm= convertToCodaObject(m, covNamesNumbers = c(T,F))
+effectiveSize(postm$Beta)
+summary(postm$Beta)
+
+getPostEstimate(m, "Beta")
+postsup= getPostEstimate(m, "Beta")$support[2:7, ]
+
+postsup[which(postsup<0.5)] = 1 - postsup[which(postsup<0.5)]
+postsup
+```
+
+#Obtain the selection gradients for the model
+
+```{r, echo=FALSE}
+nX = ncol(m$XData)
+nX
+
+#beta_raw_post = post$Beta[,2:(nX+1)][[1]] #posterior for betas
+beta_raw_post = postm$Beta[,2:(5+1)][[1]]
+head(beta_raw_post)
+
+beta_var_post = matrix(NA, nrow=nrow(beta_raw_post), ncol=nX)
+for(i in 1:nX){
+  beta_var_post[,i] = beta_raw_post[,i]*sd(XData[,i])
+}
+
+beta_mean_post = matrix(NA, nrow=nrow(beta_raw_post), ncol=nX)
+for(i in 1:nX){
+  beta_mean_post[,i] = beta_raw_post[,i]*mean(XData[,i])
+}
+
+beta_raw = apply(beta_raw_post, 2, mean)
+beta_raw_lower = apply(beta_raw_post, 2, quantile, c(0.025))
+beta_raw_upper = apply(beta_raw_post, 2, quantile, c(0.975))
+
+beta_var = apply(beta_var_post, 2, mean)
+beta_var_lower = apply(beta_var_post, 2, quantile, c(0.025))
+beta_var_upper = apply(beta_var_post, 2, quantile, c(0.975))
+
+beta_mean = apply(beta_mean_post, 2, mean)
+beta_mean_lower = apply(beta_mean_post, 2, quantile, c(0.025))
+beta_mean_upper = apply(beta_mean_post, 2, quantile, c(0.975))
+
+resmat_RRR = data.frame(beta_raw = round(beta_raw, 3),
+                        L = round(beta_raw_lower, 3),
+                        U = round(beta_raw_upper, 3),
+                        beta_var = round(beta_var, 3),
+                        L = round(beta_var_lower, 3),
+                        U = round(beta_var_upper, 3),
+                        beta_mean = round(beta_mean*100, 3),
+                        L = round(beta_mean_lower, 3),
+                        U = round(beta_mean_upper, 3))
+
+betaRRR = postm$Beta[,(nX+2):(m$ncRRR+(nX+1))][[1]] #posterior for beta_RRR
+#betaRRR = post$Beta[,(5+2):(m$ncRRR+(5+1))][[1]] #posterior for beta_RRR
+length(betaRRR)
+
+# The anim-pollinated co-flowering community axis"
+dim(m$XRRR)
+
+comp1_post = matrix(NA, nrow=length(betaRRR), ncol=m$ny)
+for(i in 1:length(betaRRR)){
+  comp1_post[i,]=m$XRRR %*% as.matrix((wRRR_post[i,1,]))
+}
+
+beta_comp1_post=NULL
+for(i in 1:1000){
+  beta_comp1_post[i]=betaRRR[i]*sd(comp1_post[i,])
+}
+
+resmat_RRR[nrow(resmat_RRR)+1,]=c("NA","NA","NA", 
+                 round(mean(beta_comp1_post), 3),
+                 round(quantile(beta_comp1_post, c(0.025)), 3),
+                 round(quantile(beta_comp1_post, c(0.975)), 3),
+                 "NA", "NA","NA")
+kable(resmat_RRR)
+
+```
+
+

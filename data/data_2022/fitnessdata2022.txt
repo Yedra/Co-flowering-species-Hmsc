@@ -1,0 +1,2005 @@
+site	species	year	date	individual	subindividual	flower	pollinaria_removed	pollen_on_stigma	herbivory	recorder	writer	notes
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	101	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	101	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	101	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	101	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	101	NA	5	2	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	102	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	102	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	102	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	102	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	102	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	103	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	103	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	103	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	103	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	103	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	104	NA	1	1	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	104	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	104	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	104	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	104	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	105	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	105	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	105	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	105	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	105	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	106	NA	1	1	1	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	106	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	106	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	106	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	106	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	107	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	107	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	107	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	107	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	107	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	108	NA	1	2	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	108	NA	2	2	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	108	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	108	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	108	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	109	NA	1	1	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	109	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	109	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	109	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	109	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	110	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	110	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	110	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	110	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	110	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	111	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	111	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	111	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	111	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	111	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	112	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	112	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	112	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	112	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	112	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	113	NA	1	0	1	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	113	NA	2	0	1	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	113	NA	3	0	1	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	113	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	113	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	114	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	114	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	114	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	114	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	114	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	115	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	115	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	115	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	115	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	115	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	116	NA	1	0	1	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	116	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	116	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	116	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	116	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	117	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	117	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	117	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	117	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	117	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	118	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	118	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	118	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	118	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	118	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	119	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	119	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	119	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	119	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	119	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	120	NA	1	1	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	120	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	120	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	120	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	120	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	121	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	121	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	121	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	121	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	121	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	122	NA	1	2	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	122	NA	2	2	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	122	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	122	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	122	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	123	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	123	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	123	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	123	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	123	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	124	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	124	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	124	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	124	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	124	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	125	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	125	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	125	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	125	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	125	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	126	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	126	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	126	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	126	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	126	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	127	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	127	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	127	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	127	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	127	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	128	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	128	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	128	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	128	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	128	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	129	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	129	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	129	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	129	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	129	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	130	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	130	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	130	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	130	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	130	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	131	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	131	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	131	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	131	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	131	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	132	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	132	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	132	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	132	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	132	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	133	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	133	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	133	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	133	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	133	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	134	NA	1	2	1	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	134	NA	2	2	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	134	NA	3	2	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	134	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	134	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	135	NA	1	0	1	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	135	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	135	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	135	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	135	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	136	NA	1	1	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	136	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	136	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	136	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	136	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	137	NA	1	2	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	137	NA	2	2	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	137	NA	3	2	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	137	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	137	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	138	NA	1	1	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	138	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	138	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	138	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	138	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	139	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	139	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	139	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	139	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	139	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	140	NA	1	1	1	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	140	NA	2	0	1	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	140	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	140	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	140	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	141	NA	1	1	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	141	NA	2	1	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	141	NA	3	2	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	141	NA	4	2	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	141	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	142	NA	1	1	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	142	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	142	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	142	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	142	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	143	NA	1	1	1	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	143	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	143	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	143	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	143	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	144	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	144	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	144	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	144	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	144	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	145	NA	1	0	1	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	145	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	145	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	145	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	145	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	146	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	146	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	146	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	146	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	146	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	147	NA	1	2	1	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	147	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	147	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	147	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	147	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	148	NA	1	0	1	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	148	NA	2	0	1	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	148	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	148	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	148	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	149	NA	1	2	1	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	149	NA	2	2	1	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	149	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	149	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	149	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	150	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	150	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	150	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	150	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	150	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	151	NA	1	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	151	NA	2	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	151	NA	3	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	151	NA	4	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	151	NA	5	0	0	0	AS	RD	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	1	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	1	NA	2	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	1	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	1	NA	4	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	1	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	2	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	2	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	2	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	2	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	2	NA	5	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	3	NA	1	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	3	NA	2	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	3	NA	3	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	3	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	3	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	4	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	4	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	4	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	4	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	4	NA	5	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	5	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	5	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	5	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	5	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	5	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	6	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	6	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	6	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	6	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	6	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	7	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	7	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	7	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	7	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	7	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	8	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	8	NA	2	0	0	NA	Javier	Julie	White_individual
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	8	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	8	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	8	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	9	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	9	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	9	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	9	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	9	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	10	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	10	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	10	NA	3	0	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	10	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	10	NA	5	0	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	11	NA	1	2	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	11	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	11	NA	3	0	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	11	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	11	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	12	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2023	12	NA	2	2	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2024	12	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2025	12	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2026	12	NA	5	2	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2027	13	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	13	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	13	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	13	NA	4	2	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	13	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	14	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	14	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	14	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	14	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	14	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	15	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	15	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	15	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	15	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	15	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	16	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	16	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	16	NA	3	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	16	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	16	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	17	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	17	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	17	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	17	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	17	NA	5	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	18	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	18	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	18	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	18	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	18	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	19	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	19	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	19	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	19	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	19	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2023	20	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2024	20	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2025	20	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2026	20	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2027	20	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2028	22	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2029	22	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2030	22	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2031	22	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2032	22	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2033	23	NA	1	2	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2034	23	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2035	23	NA	3	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2036	23	NA	4	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2037	23	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2038	24	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2039	24	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2040	24	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2041	24	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2042	24	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2043	25	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2044	25	NA	2	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2045	25	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2046	25	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2047	25	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2048	26	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2049	26	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2050	26	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2051	26	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2052	26	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2053	27	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2054	27	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2055	27	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2056	27	NA	4	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2057	27	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2058	28	NA	1	2	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2059	28	NA	2	2	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2060	28	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2061	28	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2062	28	NA	5	0	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2063	29	NA	1	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2064	29	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2065	29	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2066	29	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2067	29	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2068	30	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2069	30	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2070	30	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2071	30	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2072	30	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2073	31	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2074	31	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2075	31	NA	3	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2076	31	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2077	31	NA	5	2	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2078	32	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2079	32	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2080	32	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2081	32	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2082	32	NA	5	2	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2083	33	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2084	33	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2085	33	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2086	33	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2087	33	NA	5	2	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2088	34	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2089	34	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2090	34	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2091	34	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2092	34	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2093	35	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2094	35	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2095	35	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2096	35	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2097	35	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2098	36	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2099	36	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2100	36	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2101	36	NA	4	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2102	36	NA	5	2	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2103	37	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2104	37	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2105	37	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2106	37	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2107	37	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2108	38	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2109	38	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2110	38	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2111	38	NA	4	1	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2112	38	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2113	39	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2114	39	NA	2	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2115	39	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2116	39	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2117	39	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2118	40	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2119	40	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2120	40	NA	3	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2121	40	NA	4	2	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2122	40	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2123	41	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2124	41	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2125	41	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2126	41	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2127	41	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2128	42	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2129	42	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2130	42	NA	3	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2131	42	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2132	42	NA	5	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2133	43	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2134	43	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2135	43	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2136	43	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2137	43	NA	5	2	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2138	44	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2139	44	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2140	44	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2141	44	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2142	44	NA	5	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2143	45	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2144	45	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2145	45	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2146	45	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2147	45	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2148	46	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2149	46	NA	2	1	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2150	46	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2151	46	NA	4	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2152	46	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2153	47	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2154	47	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2155	47	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2156	47	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2157	47	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2158	48	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2159	48	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2160	48	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2161	48	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2162	48	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2163	49	NA	1	0	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2164	49	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2165	49	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2166	49	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2167	49	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2168	50	NA	1	2	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2169	50	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2170	50	NA	3	0	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2171	50	NA	4	2	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2172	50	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2173	51	NA	1	2	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2174	51	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2175	51	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2176	51	NA	4	2	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2177	51	NA	5	0	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2178	52	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2179	52	NA	2	0	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2180	52	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2181	52	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2182	52	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2183	53	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2184	53	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2185	53	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2186	53	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2187	53	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2188	54	NA	1	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2189	54	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2190	54	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2191	54	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2192	54	NA	5	0	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2193	55	NA	1	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2194	55	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2195	55	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2196	55	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2197	55	NA	5	2	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2198	56	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2199	56	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2200	56	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2201	56	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2202	56	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2203	57	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2204	57	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2205	57	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2206	57	NA	4	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2207	57	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2208	58	NA	1	2	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2209	58	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2210	58	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2211	58	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2212	58	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2213	59	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2214	59	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2215	59	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2216	59	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2217	59	NA	5	2	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2218	60	NA	1	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2219	60	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2220	60	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2221	60	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2222	60	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2223	61	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2224	61	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2225	61	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2226	61	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2227	61	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2228	62	NA	1	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2229	62	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2230	62	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2231	62	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2232	62	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2233	63	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2234	63	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2235	63	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2236	63	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2237	63	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2238	64	NA	1	2	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2239	64	NA	2	1	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2240	64	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2241	64	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2242	64	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2243	65	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2244	65	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2245	65	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2246	65	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2247	65	NA	5	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2248	66	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2249	66	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2250	66	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2251	66	NA	4	2	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2252	66	NA	5	2	1	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2253	67	NA	1	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2254	67	NA	2	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2255	67	NA	3	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2256	67	NA	4	0	0	NA	Javier	Julie	NA
+Oerup	Dactylorhiza_majalis	2022	23.5.2257	67	NA	5	0	0	NA	Javier	Julie	NA
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												

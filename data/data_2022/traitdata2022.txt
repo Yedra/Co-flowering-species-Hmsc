@@ -1,0 +1,537 @@
+site	species	year	date	individual	subindividual	patch	height_cm	flowers_open	flowers_bud	corolla_height_mm	lip_width_mm	flower_size_mm	spur_length_mm	recorder	writer	notes											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	101	NA	O1	20.00	17	6	13.00	12.09	NA	9.07	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	102	NA	O1	11.00	11	5	12.76	8.42	NA	9.63	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	103	NA	O1	17.00	7	1	13.01	8.31	NA	8.57	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	104	NA	O1	12.00	8	2	13.54	11.63	NA	8.55	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	105	NA	O1	18.00	14	2	13.83	10.24	NA	8.82	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	106	NA	O1	13.00	11	2	9.89	10.50	NA	9.20	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	107	NA	O1	14.00	5	7	13.14	10.28	NA	9.57	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	108	NA	O1	16.00	15	4	13.46	7.92	NA	12.81	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	109	NA	O1	13.00	10	0	13.82	10.05	NA	8.99	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	110	NA	O1	12.00	8	0	13.31	9.58	NA	7.65	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	111	NA	O1	13.00	13	1	11.96	10.91	NA	9.17	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	112	NA	O1	9.00	5	7	12.14	11.06	NA	9.59	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	113	NA	O1	16.00	11	0	13.84	10.75	NA	9.45	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	114	NA	O1	23.00	6	9	12.56	9.97	NA	7.74	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	115	NA	O1	18.00	14	4	13.66	10.36	NA	9.42	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	116	NA	O2	20.00	14	1	17.65	10.02	NA	8.44	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	117	NA	O2	16.00	6	6	15.07	9.47	NA	8.80	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	118	NA	O2	22.00	11	15	9.65	12.17	NA	10.69	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	119	NA	O2	23.00	5	11	14.79	10.27	NA	8.14	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	120	NA	O2	25.00	8	9	12.26	9.64	NA	4.86	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	121	NA	O2	24.00	14	0	13.56	10.28	NA	6.14	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	122	NA	O2	26.00	18	1	14.19	11.24	NA	8.70	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	123	NA	O2	24.00	10	9	11.77	8.78	NA	8.00	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	124	NA	O2	23.00	14	0	9.98	11.06	NA	7.81	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	125	NA	O2	25.00	8	0	10.18	8.07	NA	8.37	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	126	NA	O3	21.00	10	0	11.99	10.01	NA	7.95	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	127	NA	O3	18.00	8	5	11.51	10.40	NA	7.50	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	128	NA	O3	19.00	10	0	16.61	11.49	NA	11.57	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	129	NA	O3	10.00	6	10	10.17	10.06	NA	11.26	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	130	NA	O3	15.00	6	11	13.14	6.82	NA	8.92	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	131	NA	O4	16.00	8	3	8.46	9.55	NA	8.28	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	132	NA	O4	13.00	8	3	16.20	8.26	NA	9.89	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	133	NA	O4	17.00	7	11	14.61	10.02	NA	7.69	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	134	NA	O4	17.00	15	4	14.11	8.11	NA	9.22	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	135	NA	O4	20.00	20	5	8.52	10.26	NA	8.66	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	136	NA	O4	17.00	10	6	9.08	10.55	NA	8.97	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	137	NA	O4	16.00	7	0	13.96	10.44	NA	8.80	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	138	NA	O4	15.00	6	7	10.24	9.21	NA	10.54	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	139	NA	O4	14.00	7	1	11.26	9.78	NA	7.87	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	140	NA	O4	20.00	11	1	12.42	10.63	NA	8.78	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	141	NA	O5	18.00	10	6	8.91	5.02	NA	8.66	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	142	NA	O5	12.00	7	1	9.52	11.79	NA	11.01	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	143	NA	O5	14.00	16	12	11.74	9.62	NA	8.17	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	144	NA	O5	14.00	16	4	12.86	9.90	NA	7.40	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	145	NA	O5	20.00	4	5	14.14	9.87	NA	8.16	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	146	NA	O5	16.00	9	4	11.55	8.43	NA	7.33	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	147	NA	O5	22.00	19	6	13.19	10.34	NA	7.34	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	148	NA	O5	18.00	15	1	13.74	10.58	NA	8.26	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	149	NA	O5	15.00	5	1	14.26	10.76	NA	7.41	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	150	NA	O5	12.00	7	5	12.65	10.71	NA	7.76	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	151	NA	O5	26.00	21	2	13.58	10.15	NA	7.78	AH	RD	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	1	NA	M1	41.00	24	3	12.38	13.79	NA	13.30	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	2	NA	M1	22.00	10	0	10.60	9.58	NA	9.75	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	3	NA	M1	21.00	6	5	11.74	9.92	NA	11.40	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	4	NA	M1	24.00	11	4	11.10	9.64	NA	10.29	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	5	NA	M1	23.00	11	0	10.92	8.78	NA	9.27	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	6	NA	M1	26.00	16	3	10.77	9.34	NA	10.86	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	7	NA	M1	26.00	11	1	12.43	9.30	NA	8.76	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	8	NA	M1	22.00	12	1	10.64	10.78	NA	8.64	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	9	NA	M1	22.00	14	1	12.75	10.70	NA	9.31	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	10	NA	M1	37.00	26	2	10.55	11.28	NA	10.45	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	11	NA	M1	29.00	16	8	11.81	11.33	NA	10.20	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	12	NA	M1	36.00	26	4	11.16	12.86	NA	10.54	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	13	NA	M1	28.00	24	3	9.70	10.90	NA	12.67	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	14	NA	M1	27.00	20	1	11.77	10.33	NA	11.17	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	15	NA	M1	26.00	6	6	10.22	10.80	NA	9.24	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	16	NA	M1	26.00	17	7	11.73	8.88	NA	8.48	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	17	NA	M1	25.00	12	10	12.33	9.90	NA	10.52	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	18	NA	M1	29.00	10	10	13.45	12.22	NA	9.54	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	19	NA	M1	22.00	6	9	11.48	10.82	NA	11.44	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	20	NA	M1	21.00	14	2	11.57	10.24	NA	10.14	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	22	NA	M1	20.00	10	3	12.32	10.63	NA	10.90	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	23	NA	M1	21.00	9	4	10.52	8.86	NA	9.26	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	24	NA	M1	21.00	11	3	6.58	6.82	NA	8.09	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	25	NA	M1	22.00	6	0	12.25	9.65	NA	9.69	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	26	NA	M1	21.00	6	5	12.86	9.76	NA	10.45	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	27	NA	M1	20.00	11	1	10.82	7.18	NA	8.86	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	28	NA	M1	34.00	19	1	10.27	10.07	NA	11.83	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	29	NA	M1	27.00	10	15	14.74	11.75	NA	10.91	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	30	NA	M1	25.00	10	1	11.30	11.46	NA	9.73	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	31	NA	M1	20.00	6	1	12.56	9.36	NA	10.20	Seeger	Mikael	Lower_4_flowers_damaged											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	32	NA	M1	20.00	8	1	10.27	9.80	NA	7.22	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	33	NA	M1	17.00	19	2	11.61	8.86	NA	9.41	Seeger	Mikael	Pale											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	34	NA	M1	18.00	10	6	12.12	8.79	NA	7.83	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	35	NA	M1	21.00	15	0	9.37	9.38	NA	8.38	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	36	NA	M1	18.00	8	1	11.75	10.07	NA	9.22	Seeger	Mikael	Spur_from_different_flower											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	37	NA	M1	18.00	15	1	15.13	11.52	NA	11.25	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	38	NA	M1	21.00	12	7	14.15	12.49	NA	10.99	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	39	NA	M2	22.00	11	2	10.73	12.06	NA	9.52	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	40	NA	M2	27.00	16	0	11.65	10.23	NA	10.17	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	41	NA	M2	19.00	10	2	9.72	7.51	NA	7.56	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	42	NA	M2	25.00	19	4	11.30	9.74	NA	11.87	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	43	NA	M2	23.00	16	1	11.29	9.42	NA	9.41	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	44	NA	M2	26.00	28	1	10.80	9.33	NA	8.77	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	45	NA	M2	14.00	9	1	11.88	8.03	NA	8.12	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	46	NA	M2	24.00	11	1	9.25	10.80	NA	11.24	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	47	NA	M2	21.00	7	1	13.57	11.74	NA	10.82	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	48	NA	M2	20.00	17	6	11.23	8.71	NA	8.70	Seeger	Mikael	White											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	49	NA	M2	37.00	36	3	12.76	10.70	NA	9.40	Seeger	Mikael	Giant											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	50	NA	M2	28.00	11	8	13.92	9.70	NA	10.92	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	51	NA	M2	38.00	29	2	13.28	10.55	NA	9.00	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	52	NA	M2	33.00	24	0	8.11	9.33	NA	9.33	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	53	NA	M2	28.00	20	4	12.34	8.54	NA	9.63	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	54	NA	M2	27.00	17	20	12.13	10.00	NA	9.41	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	55	NA	M2	40.00	15	9	12.28	11.83	NA	10.53	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	56	NA	M2	23.00	12	2	12.86	7.80	NA	8.88	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	57	NA	M2	29.00	24	2	8.65	8.72	NA	10.02	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	58	NA	M2	30.00	18	3	14.55	11.74	NA	10.52	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	59	NA	M2	22.00	17	11	11.72	7.61	NA	10.18	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	60	NA	M2	22.00	19	0	7.27	8.65	NA	8.37	Seeger	Mikael	3rd_flower_from_bottom_											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	61	NA	M2	22.00	10	1	10.37	10.79	NA	8.76	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	62	NA	M2	25.00	12	10	9.36	7.34	NA	7.84	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	63	NA	M2	24.00	8	12	10.40	9.18	NA	9.71	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	64	NA	M2	30.00	14	5	14.65	10.27	NA	11.61	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	65	NA	M2	26.00	8	7	13.26	9.87	NA	9.00	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	66	NA	M2	27.00	12	1	12.05	9.72	NA	6.76	Seeger	Mikael	NA											
+Oerup	Dactylorhiza_majalis	2022	23.5.2022	67	NA	M2	26.00	8	5	11.40	8.64	NA	8.47	Seeger	Mikael	NA											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
+																											
