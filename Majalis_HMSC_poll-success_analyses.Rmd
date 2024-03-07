@@ -3,10 +3,8 @@ title: 'D. majalis: Selection analyses via pollination success'
 author: '"Yedra Garcia"'
 date: "2023-12-08"
 output: html_document
+self_contained: no
 ---
-
-
-
 
 ```{r, eval=FALSE}
 library(tidyverse)
@@ -15,6 +13,7 @@ library(abind)
 library(mgcv)
 library(knitr)
 library(ggplot2)
+library(ggpubr)
 ```
 
 #Loading trait, fitness, co-flowering community and animal-pollspecies data
@@ -240,7 +239,7 @@ nChains = 1
 mo= sampleMcmc(mo, samples = samples, thin = thin, adaptNf=rep(adaptNf, mo$nr), 
                transient = transient, nChains = nChains)
 
-save(mo, file ="analyses/models_pollsuccess-o_norand_maj.RData")
+#save(mo, file ="analyses/models_pollsuccess-o_norand_maj.RData")
 
 postm= convertToCodaObject(mo, covNamesNumbers = c(T,F))
 
@@ -362,18 +361,10 @@ save(MF_results, file="results/MF_pollsuccess-o_maj.RData")
 MF_results
 ```
 
-Let now estimate the WAIC for each model:
-
-```{r, echo=FALSE}
-
-
-WAIC_m= computeWAIC(post)
-
-
-```
-
 #Obtain the selection gradients for m
+
 ```{r, echo=FALSE}
+
 nX = ncol(m$XData)
 nX
 
@@ -540,101 +531,13 @@ kable(resmat_M2)
 
 ```
 
-#Plot gradients
-```{r, fig.height= 5.8, fig.width= 7, echo=FALSE}
-###Plot gradients----
+
+```{r, echo=FALSE}
+
 
 beta_pol_maj= list(resmat_RRR, resmat_M1, resmat_M2)
 
 #save(beta_pol_maj, file= "analyses/betas_poll_maj.RData")
-
-load(file= "analyses/betas_poll_maj.RData")
-
-mods= c("RRRco", "MR", "MRco")
-
-#Variance-scaled Betas
-
-summary_var = matrix(NA, nrow = 6, ncol = length(mods))
-for(i in 1:length(mods)){
-  summary_var[,i] = round(as.numeric(beta_pol_maj[[i]]$beta_var), 3)
-}
-
-colnames(summary_var) = mods
-rownames(summary_var) = rownames(beta_pol_maj[[1]])
-summary_var = t(summary_var)
-summary_var
-
-upper_var = matrix(NA, nrow = 6, ncol = length(mods))
-for(i in 1:length(mods)){
-  upper_var[,i] = round(as.numeric(beta_pol_maj[[i]]$U.1), 3)
-}
-
-colnames(upper_var) = mods
-rownames(upper_var) = rownames(beta_pol_maj[[1]])
-upper_var = t(upper_var)
-upper_var
-
-lower_var = matrix(NA, nrow = 6, ncol = length(mods))
-for(i in 1:length(mods)){
-  lower_var[,i] = round(as.numeric(beta_pol_maj[[i]]$L.1), 3)
-}
-
-colnames(lower_var) = mods
-rownames(lower_var) = rownames(beta_pol_maj[[1]])
-lower_var = t(lower_var)
-
-summary_var[,6] = summary_var[,6]*-1
-lower_var[,6] = lower_var[,6]*-1
-upper_var[,6] = upper_var[,6]*-1
-summary_var
-
-bdfv = data.frame(summary_var, lower_var, upper_var)
-names(bdfv)= c("B_PlantHeight", "B_FlwSize", "B_SpurLength", "B_opflow", "B_nflow", "B_community", rep("Lower", times=6), rep("Upper", times=6))
-
-bdfv <- cbind(model = rownames(bdfv), bdfv)
-
-bdfmv= melt(setDT(bdfv), measure = patterns("^B", "^Lower", "^Upper"), value.name = c("Beta_var", "Lower", "Upper"), variable.name = "trait", variable.factor = "trait")
-bdfmv$model= as.factor(bdfmv$model)
-
-
-bdf2v= bdfmv %>% mutate(trait= recode(trait, "1"= "Plant height", "2"= "Flower size", "3"= "Spur length", "4"= "Flowers", "5"= "n", "6"= "Community"), model= factor(model, levels=c("RRRco", "MR","MRco")))
-
-bdf2v.n= bdf2v %>% filter(trait!= "n")%>%
- droplevels()
-#bdf2v.n
-
-VARplot_pol_maj= ggplot(bdf2v.n, aes(x=trait, y=Beta_var, colour=factor(model))) + 
-  geom_point(size=2.5) +
-  geom_errorbar(aes(ymin = Lower, ymax = Upper), linetype = "solid")+
-  labs(y= expression(beta ~ "Variance-standardized selection gradients"), x= expression(italic("Dactylorhiza majalis"), size=12)) +
-  scale_y_continuous(breaks = c(-0.50, -0.25, 0, 0.25, 0.50, 0.75), limits=c(-0.50, 0.75))+
-  facet_wrap(~ trait, nrow = 1L, strip.position = "top")+
-  theme_bw(base_size = 15)+
-  theme(text = element_text(size=15), legend.title= element_blank(), axis.text.x= element_blank(), axis.ticks.x = element_blank(), panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank(), panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank(), 
-         strip.text = element_text(size= 11))+ 
-  geom_hline(yintercept=0, linetype="dashed", color = "black")
-
-VARplot_pol_maj
-
-VARplot_pol_maj= ggplot(bdf2v.n, aes(x=model, y=Beta_var, colour=factor(model))) + 
-  geom_pointrange(aes(ymin = Lower, ymax = Upper), linetype = "solid", size=0.75) +
-  #geom_errorbar(aes(ymin = Lower, ymax = Upper), linetype = "solid")+
-  labs(y= expression(beta ~ "Variance-standardized selection gradients"), x= expression(italic("Dactylorhiza majalis"), size=12)) +
-  scale_y_continuous(breaks = c(-0.50, -0.25, 0, 0.25, 0.50, 0.75), limits=c(-0.50, 0.75))+
-  facet_wrap(~ trait, nrow = 2L, strip.position = "top")+
-  theme_bw(base_size = 15)+
-  theme(text = element_text(size=15), legend.title= element_blank(), axis.text.x= element_blank(), axis.ticks.x = element_blank(), panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank(), panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank(), 
-         strip.text = element_text(size= 11))+ 
-  geom_hline(yintercept=0, linetype="dashed", color = "black")
-
-VARplot_pol_maj
-
-```
-
-
-```{r, fig.height= 5.8, fig.width= 7, echo=FALSE}
-
-
 
 ```
 

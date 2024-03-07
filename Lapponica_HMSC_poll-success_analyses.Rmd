@@ -16,6 +16,8 @@ library(ggplot2)
 library(reshape2)
 library(data.table)
 library(ggpubr)
+library(forcats)
+library(ggplot2)
 ```
 
 #Loading trait, fitness, co-flowering community and animal-poll species data
@@ -242,7 +244,7 @@ for(i in 1:4){
 
 #save(models, file ="analyses/models_pollsuccess_lap.RData")
 
-#load(file= "analyses/models_pollsuccess_lap.RData")
+load(file= "analyses/models_pollsuccess_lap.RData")
 
 #m_all= sampleMcmc(m, samples = samples, thin = thin, #adaptNf=rep(adaptNf, m$nr), transient = transient, nChains = nChains)
 
@@ -271,14 +273,26 @@ Posterior support for the animal-pollinated coflowering community
 #Posterior support for the RRR animal-pollinated coflowering community
 getPostEstimate(models[[1]], "Beta")
 
-postsup= getPostEstimate(models[[4]], "Beta")$support[2:7, ]
+postsup= getPostEstimate(models[[1]], "Beta")$support[2:7, ]
 
 postsup[which(postsup<0.5)] = 1 - postsup[which(postsup<0.5)]
 postsup
 ```
 
+Posterior support for the non-animal pollinated coflowering community
+```{r, echo=FALSE}
+postsup_np= getPostEstimate(models[[4]], "Beta")$support[2:7, ]
+postsup_np
+
+postsup_np[which(postsup_np<0.5)] = 1 - postsup_np[which(postsup_np<0.5)]
+postsup_np
+
+```
+
 
 ```{r, echo=FALSE}
+load(file ="analyses/model-allcommunity_pollsuccess_lap.RData")
+
 getPostEstimate(m_all, "Beta")
 
 postsup= getPostEstimate(m_all, "Beta")$support[2:7, ]
@@ -349,7 +363,7 @@ rownames(MF_results)=  c("MF", "MF_cV")
 
 MF_results= as.data.frame(MF_results)
 
-save(MF_results, file="results/MF_pollsuccess_lap.RData")
+#save(MF_results, file="results/MF_pollsuccess_lap.RData")
 ```
 
 #Obtain the selection gradients for m
@@ -560,7 +574,10 @@ resmat_M3 = data.frame(beta_raw = round(beta_raw, 3),
 resmat_M3[nrow(resmat_M3)+1,]= rep(c("NA"), times= 9)
 
 kable(resmat_M3)
+```
 
+
+```{r, echo=FALSE}
 ######
 betaRRR = post3$Beta[,(nX+2):(models[[4]]$ncRRR+(nX+1))][[1]] #posterior for beta_RRR
 #betaRRR = post$Beta[,(5+2):(m$ncRRR+(5+1))][[1]] #posterior for beta_RRR
@@ -596,8 +613,8 @@ resmat_M3[nrow(resmat_M3)+1,]=c("NA","NA","NA",
 kable(resmat_M3)
 ```
 
-#Plot gradients
-```{r, fig.height= 5.8, fig.width= 7, echo=FALSE}
+
+```{r, echo=FALSE}
 ###Plot gradients----
 
 beta_pol_lap= list(resmat_RRR, resmat_M1, resmat_M2, resmat_M3)
@@ -605,85 +622,6 @@ beta_pol_lap= list(resmat_RRR, resmat_M1, resmat_M2, resmat_M3)
 #save(beta_pol_lap, file="analyses/betas_poll_lap.RData")
 
 load(file= "analyses/betas_poll_lap.RData")
-
-mods= c("RRRco", "MR", "MRco", "RRRn")
-
-#Variance-scaled Betas
-
-summary_var = matrix(NA, nrow = 6, ncol = length(mods))
-for(i in 1:length(mods)){
-  summary_var[,i] = round(as.numeric(beta_pol_lap[[i]]$beta_var), 3)
-}
-
-colnames(summary_var) = mods
-rownames(summary_var) = rownames(beta_pol_lap[[1]])
-summary_var = t(summary_var)
-summary_var
-
-upper_var = matrix(NA, nrow = 6, ncol = length(mods))
-for(i in 1:length(mods)){
-  upper_var[,i] = round(as.numeric(beta_pol_lap[[i]]$U.1), 3)
-}
-
-colnames(upper_var) = mods
-rownames(upper_var) = rownames(beta_pol_lap[[1]])
-upper_var = t(upper_var)
-upper_var
-
-lower_var = matrix(NA, nrow = 6, ncol = length(mods))
-for(i in 1:length(mods)){
-  lower_var[,i] = round(as.numeric(beta_pol_lap[[i]]$L.1), 3)
-}
-
-colnames(lower_var) = mods
-rownames(lower_var) = rownames(beta_pol_lap[[1]])
-lower_var = t(lower_var)
-
-summary_var[4,6] = summary_var[4,6]*-1
-lower_var[4,6] = lower_var[4,6]*-1
-upper_var[4,6] = upper_var[4,6]*-1
-summary_var
-
-
-bdfv = data.frame(summary_var, lower_var, upper_var)
-names(bdfv)= c("B_PlantHeight", "B_FlwSize", "B_SpurLength", "B_SpurWidth", "B_nflow", "B_community", rep("Lower", times=6), rep("Upper", times=6))
-
-bdfv <- cbind(model = rownames(bdfv), bdfv)
-
-bdfmv= melt(setDT(bdfv), measure = patterns("^B", "^Lower", "^Upper"), value.name = c("Beta_var", "Lower", "Upper"), variable.name = "trait", variable.factor = "trait")
-bdfmv$model= as.factor(bdfmv$model)
-
-
-bdf2v= bdfmv %>% mutate(trait= recode(trait, "1"= "Plant height", "2"= "Flower size", "3"= "Spur length", "4"= "Spur width", "5"= "Open Flowers", "6"= "Community"), model= factor(model, levels=c("RRRco", "MR","MRco", "RRRn")))
-
-bdf2vn= bdf2v[complete.cases(bdf2v), ]
-
-#bdf2v.n= bdf2v %>% filter(trait!= "Flw_n")%>%
- # droplevels()
-#bdf2v.n , ,
-
-VARplot_pol_lap= ggplot(bdf2vn, aes(x=model, y=Beta_var, colour=factor(model))) +
-  geom_pointrange(aes(ymin = Lower, ymax = Upper), linetype = "solid", size=0.75)+ 
-  #geom_errorbar(aes(ymin = Lower, ymax = Upper), linetype = "solid")+
-  labs(y= expression(beta ~ "variance-standardized selection gradients"), x= expression(italic("Dactylorhiza lapponica"), size=12)) +
-scale_y_continuous(breaks = c(-0.60, -0.40, -0.20, 0, 0.20, 0.40, 0.60, 0.80), limits=c(-0.60, 1))+
-  facet_wrap(~ trait, nrow = 1L, strip.position = "top")+
-  theme_bw(base_size = 15)+
-  theme(text = element_text(size=15), axis.text.x= element_blank(),  axis.ticks.x = element_blank(), legend.title= element_blank(), legend.position="top", panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank(), panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank(),
-         strip.text = element_text(size= 11))+ 
-  geom_hline(yintercept=0, linetype="dashed", color = "black")
-
-VARplot_pol_lap
-```
-
-
-```{r, fig.height= 7.5, fig.width= 15, echo=FALSE}
-ggarrange(VARplot_pol_lap, VARplot_pol_maj, ncol=2, nrow=1)
-```
-
-
-```{r, fig.height= 7.5, fig.width= 15, echo=FALSE}
-ggarrange(VARplot_pol_lap,VARplot_fset_lap, ncol=1, nrow=2)
 
 ```
 

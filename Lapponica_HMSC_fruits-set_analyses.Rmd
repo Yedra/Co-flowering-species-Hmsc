@@ -19,8 +19,6 @@ library(ggpubr)
 
 #Here
 
-
-
 Loading trait (include fruit information) and co-flowering community data
 ```{r, , eval=FALSE}
 
@@ -558,14 +556,13 @@ resmat_M3[nrow(resmat_M3)+1,]=c("NA","NA","NA",
 kable(resmat_M3)
 ```
 
-#Plot selection gradients
 
 ```{r, fig.height= 5.8, fig.width= 7, echo= FALSE}
 beta_fset_lap= list(resmat_RRR, resmat_M1, resmat_M2, resmat_M3)
 
 #save(beta_fset_lap, file= "analyses/betas_fset_lap.RData")
 
-load(file= "analyses/betas_fset_maj.RData")
+load(file= "analyses/betas_fset_lap.RData")
 
 mods= c("RRRco", "MR", "MRco", "RRRn")
 
