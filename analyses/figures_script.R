@@ -1,6 +1,8 @@
 ###Plot selection gradients----
 library(tidyverse)
 library(ggplot2)
+library(reshape2)
+library(data.table)
 library(ggpubr)
 
 #First for relative pollination success----
@@ -64,7 +66,7 @@ bdf2vn= bdf2vn %>% mutate(trait= factor(trait, levels=c("Plant height", "Flowers
 str(bdf2vn)
 
 VARplot_pol_lap= ggplot(bdf2vn, aes(x=model, y=Beta_var, colour= factor(model))) +
-  geom_pointrange(aes(ymin = Lower, ymax = Upper), linetype = "solid", size=0.75)+ 
+  geom_pointrange(aes(ymin = Lower, ymax = Upper), shape= 17, linetype = "solid", size=0.75)+ 
   #geom_errorbar(aes(ymin = Lower, ymax = Upper), linetype = "solid")+
   labs(y= expression(beta ~ "variance-scaled selection gradients"), x= expression(italic("Dactylorhiza majalis subsp. lapponica"),
   size=12))+
@@ -159,7 +161,7 @@ colores= c("#F8766D", "#7CAE00", "#00BFC4")
 bdf2v.n2 = bdf2v.n2 %>% mutate(trait = factor(trait,levels= c("Plant height", "Flowers", "Flower size",  "Spur length", "Community")))
 
 VARplot_pol_maj= ggplot(bdf2v.n2, aes(x=model, y=Beta_var, colour= model)) +
-  geom_pointrange(aes(ymin = Lower, ymax = Upper), linetype = "solid", size=0.75)+ 
+  geom_pointrange(aes(ymin = Lower, ymax = Upper), shape= 17, linetype = "solid", size=0.75)+ 
   #geom_errorbar(aes(ymin = Lower, ymax = Upper), linetype = "solid")+
   labs(y= expression(beta ~ "variance-scaled selection gradients"), x= expression(italic("Dactylorhiza majalis subsp. majalis"), 
    size=12)) +
@@ -252,7 +254,7 @@ bdf2= bdf2 %>% mutate(trait = factor(trait,levels= c("Plant height", "Flowers", 
 
 
 VARplot_fset_lap= ggplot(bdf2, aes(x= model, y=Beta_var, colour=factor(model))) + 
-  geom_pointrange(aes(ymin = Lower, ymax = Upper), linetype = "solid", size=0.75)+
+  geom_pointrange(aes(ymin = Lower, ymax = Upper), shape= 17, linetype = "solid", size=0.75)+
   labs(y= expression(beta ~ "Variance-scaled selection gradients"), x= expression(italic("Dactylorhiza majalis subsp. lapponica"), size=12))+
   scale_y_continuous(breaks = c(-0.60, -0.40, -0.20, 0, 0.20, 0.40, 0.60, 0.80), limits=c(-0.60, 1))+
   facet_grid(cols = vars(trait), scales = "free")+
@@ -269,7 +271,7 @@ asterisks= tibble(
                 levels= c("Plant height", "Flowers", "Flower size", "Spur length","Spur width", "Community")),
   x= c(1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1),
   xend= c(1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1),
-  y= c(0.42, 0.45, 0.46, 0.45, 0.46, 0.44, 0.47, 0.45, 0.32, 0.33, 0.35, 0.33, -0.46, -0.46, -0.48, -0.47, 0.33),
+  y= c(0.4, 0.42, 0.44, 0.42, 0.44, 0.44, 0.46, 0.44, 0.32, 0.32, 0.35, 0.32, -0.48, -0.48, -0.50, -0.48, 0.32),
   label= c("*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*","*"))
 
 fset_lap= VARplot_fset_lap+
@@ -333,7 +335,7 @@ bdf2= bdf2 %>% mutate(trait = factor(trait,levels= c("Plant height", "Flowers", 
 colores= c("#F8766D", "#7CAE00", "#00BFC4")
 
 VARplot_fset_maj= ggplot(bdf2, aes(x=model, y=Beta_var, colour=factor(model))) +
-  geom_pointrange(aes(ymin = Lower, ymax = Upper), linetype = "solid", size=0.75)+
+  geom_pointrange(aes(ymin = Lower, ymax = Upper), shape= 17, linetype = "solid", size=0.75)+
   #geom_errorbar(aes(ymin = Lower, ymax = Upper), width=.75) +
   labs(y= expression(beta ~ "Variance-scaled selection gradients"), x= expression(italic("Dactylorhiza majalis subsp. majalis"), size=12))+
   scale_y_continuous(breaks = c(-0.50, -0.25, 0, 0.25, 0.50, 0.75, 1), limits=c(-0.50, 1))+
@@ -351,7 +353,7 @@ asterisks= tibble(
   levels= c("Plant height", "Flowers", "Flower size", "Spur length","Spur width", "Community")),
   x= c(1, 2, 3, 1, 2, 3, 1),
   xend= c(1, 2, 3, 1, 2, 3, 1),
-  y= c(0.94, 1, 0.83, 0.60, 0.61, 0.61, 0.77),
+  y= c(0.94, 1, 0.82, 0.61, 0.61, 0.61, 0.78),
   label= c("*", "*", "*", "*", "*", "*", "*"))
 
 fset_maj= VARplot_fset_maj+
