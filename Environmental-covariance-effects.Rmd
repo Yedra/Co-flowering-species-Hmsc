@@ -5,9 +5,9 @@ date: "2023-12-09"
 output: html_document
 ---
 
-In this script we are going to set up a HMSC model to test for relationships between the environmental context and the phenotypic traits of two food-deceptive orchids which may indicate environmental covariance effects on traits leading to biased phenotypic selection estimates. To do that we use the animal-pollinated co-flowering community of each study orchid as a proxy of its environmental context by appliying a reduced-rank regression approach in HMSC.
+We are going to set up a model in HMSC to address the influence of micro-environmental variation on phenotypic traits of two food-deceptive orchids, which may indicate spurious trait-fitness correlations through environmental covariance effects. To do that, we use the surrounding animal-pollinated co-flowering community of each study orchid as a proxy of the micro-environment by applying a reduced-rank regression approach in HMSC.
 
-We expect that the co-flowering community shapes the microenvironment which in turn affects the traits of species growing in that microenvironment.
+Hence, we use the co-flowering community composition surrounding each study orchid as a proxy of the micro-environment experienced by that orchid species, which we would expect to influence its phenotype.
 
 
 ```{r,  echo= FALSE}
@@ -20,7 +20,7 @@ library(ggplot2)
 library(ggpubr)
 ```
 
-First for D. lapponica. Load combined info on plant traits and the co-flowering community
+#First for D. lapponica. Load merged data on phenotypic traits and the co-flowering community
 
 ```{r, echo= FALSE}
 load(file= "analyses/alldata_lapp.RData")
@@ -29,7 +29,7 @@ indat= na.omit(all_data)
 str(indat)
 ```
 
-#Define the response variable Y of the HMSC, that contains the different traits
+#Define the response variable Y, in this case, the phenotypic traits
 
 ```{r, echo=FALSE}
 
@@ -42,7 +42,7 @@ str(Y)
 
 #Define the explanatory variable, here the co-flowering community: 
 
-we will perform a reduced-rank regression on the animal-pollinated co-flowering species 
+#We perform a reduced-rank regression on the animal-pollinated co-flowering species in the community
 ```{r}
 #Select the animal-pollinated species in the co-flowering community from the data
 
@@ -69,12 +69,15 @@ XRRRData = XRRRData[, colSums(XRRRData>=1) >1]# remove singletons
 XRRRDataScaled = data.frame(scale(XRRRData))# scale the community data
 str(XRRRData)
 ```
-Define the model XFormula that includes the RRR for the co-flowering community as predictor
+#Define the model XFormula that includes the RRR for the co-flowering community as predictor
 
 ```{r}
 XRRRFormula = as.formula(paste("~", " -1 + ", paste0(colnames(XRRRData), collapse=" + ")))
 XRRRFormula
+```
 
+#We need to define XData (here just the intercept: vector of length= number of observations)
+```{r}
 XData= data.frame(intercept=rep(1,196))
 XData
 ```
@@ -84,12 +87,11 @@ Define the HMSC model:
 m = Hmsc(Y = as.matrix(Y), XData=XData, XFormula= ~1,
          distr= "normal", 
          XRRRData=XRRRDataScaled, XRRRFormula=XRRRFormula, ncRRR=1, XRRRScale = TRUE)
-m
 ```
 
-Set model parameters:
+Set the model parameters:
 ```{r}
-samples = 1000
+samples = 1500
 thin = 100
 transient = .5*(thin*samples)
 adaptNf = 0.4*(thin*samples)
@@ -100,33 +102,32 @@ mtraits_lap = sampleMcmc(m, samples = samples, thin = thin, adaptNf=rep(adaptNf,
                      transient = transient, nChains = nChains)
 
 #save(mtraits_lap, file="analyses/model_comm-traits_lapp.RData")# including open flowers
-```
 
-#MCMC convergence:
-
-```{r}
 load(file="analyses/model_comm-traits_lapp.RData")
-
-post = convertToCodaObject(mtraits_lap)  
-plot(post$Beta)
-plot(post$Beta[, 1:10])
 ```
 
-#Check sample size:
-
+#Check effective sample sizes
 ```{r}
 #Effective sample size 
 effectiveSize(post$Beta)
 ```
 
+#MCMC convergence:
+
+```{r}
+post = convertToCodaObject(mtraits_lap)  
+plot(post$Beta)
+plot(post$Beta[, 1:10])
+```
+
 #Evaluate model fitting:
 ```{r}
+
 predY = computePredictedValues(mtraits_lap)
 MF = evaluateModelFit(mtraits_lap, predY)
 round(MF$R2, 3)
 round(mean(MF$R2), 3)#13.3% variance explained
 ```
-
 #Get Beta parameters:
 ```{r}
 pBeta = getPostEstimate(mtraits_lap, "Beta")
@@ -146,7 +147,7 @@ postsup
 
 ```
 
-Second for D. majalis. Load combined info on plant traits and the co-flowering community
+#Second, for D. majalis. Load merged data on phenotypic traits and the co-flowering community
 
 ```{r}
 load(file= "analyses/alldata_maj.RData")
@@ -160,7 +161,7 @@ indat= indata %>%
 names(indat)
 ```
 
-
+#Define the Y response variable, the phenotypic traits
 ```{r}
 
 YData= indat[, c(6:9)]
@@ -180,7 +181,7 @@ head(study.Design)
 
 #Define the explanatory variable, here the co-flowering community: 
 
-we will perform a reduced-rank regression of the animal-pollinated co-flowering species to test for co-flowering community effects on D. lapponica traits.
+#We will perform a reduced-rank regression of the animal-pollinated co-flowering species to test for co-flowering community effects on D. lapponica traits.
 
 ```{r}
 #Select the animal-pollinated species in the co-flowering community from the data
@@ -214,11 +215,6 @@ mr = Hmsc(Y = as.matrix(Y), XData=XData, XFormula= ~1,
          XRRRData=XRRRDataScaled, XRRRFormula=XRRRFormula, ncRRR=1, XRRRScale = TRUE,
          studyDesign = study.Design, ranLevels = list("patch"= rL), distr= "normal")
 
-m = Hmsc(Y = as.matrix(Y), XData=XData, XFormula= ~1, distr= "normal",
-         XRRRData=XRRRDataScaled, XRRRFormula=XRRRFormula, ncRRR=1, XRRRScale = TRUE)
-
-mr
-
 ```
 
 Set model parameters:
@@ -246,7 +242,7 @@ post = convertToCodaObject(mtraits_maj)
 plot(post$Beta[, 1:6])
 ```
 
-#Check sample size:
+#Check effective sample size:
 
 ```{r}
 #Effective sample size 
@@ -281,74 +277,6 @@ postsup[which(postsup<0.5)] = 1 - postsup[which(postsup<0.5)]
 postsup
 ```
 
-#Plot regression models on each trait
-
-For D. lapponica:
-```{r}
-wRRR = getPostEstimate(mtraits_lap, "wRRR")
-
-rrr = as.matrix(mtraits_lap$XRRRData) %*% t(as.matrix(wRRR$mean))
-rrr[, 1]
-
-RRR_lap <- data.frame(trait = rep(c("plant height (cm)",
-                                       "flower size (mm)",
-                                       "spur length (mm)",
-                                       "spur width (mm)",
-                                       "flowers open"
-                                       ), each = 196),
-                         Community = rep(rrr[, 1], 5),
-                         trait_Value = c(mtraits_lap$Y[, 1],
-                                         mtraits_lap$Y[, 2],
-                                         mtraits_lap$Y[, 3],
-                                         mtraits_lap$Y[, 4],
-                                         mtraits_lap$Y[, 5]))
-RRR_lap= RRR_lap%>% mutate(trait= factor(trait, levels=c("plant height (cm)","flower size (mm)","spur length (mm)", "spur width (mm)", "flowers open")))
-
-
-RRR_plot_lap= 
- ggplot(RRR_lap, aes(x = Community, y = trait_Value)) +
-  geom_point(size = 3) +
-  geom_smooth(method = "lm", formula = "y ~ x", se = TRUE, color = "blue") +
-  facet_wrap(~ trait, scales = "free_y", ncol = 3) +
-  theme_bw(base_size = 15) +
-  theme(panel.grid.minor = element_blank(),
-        axis.text.x = element_text(size = 15),
-        axis.text.y = element_text(size = 15),
-        )
-
-RRR_plot_lap
-```
-
-For D. majalis:
-```{r}
-wRRR = getPostEstimate(mtraits_maj, "wRRR")
-
-rrr = as.matrix(mtraits_maj$XRRRData) %*% t(as.matrix(wRRR$mean))
-rrr[, 1]
-
-RRR_maj <- data.frame(trait = rep(c("plant height (cm)",
-                                       "flower size (mm)",
-                                       "spur length (mm)",
-                                       "flowers open"
-                                       ), each = 104),
-                         Community = rep(rrr[, 1], 4),
-                         trait_Value = c(mtraits_maj$Y[, 1],
-                                         mtraits_maj$Y[, 2],
-                                         mtraits_maj$Y[, 3],
-                                         mtraits_maj$Y[, 4]))
-RRR_maj= RRR_maj%>% mutate(trait= factor(trait, levels=c("plant height (cm)","flower size (mm)","spur length (mm)", "flowers open")))
-
-RRR_plot_maj= 
-  ggplot(RRR_maj, aes(x = Community, y = trait_Value)) +
-  geom_point(size = 3) +
-  geom_smooth(method = "lm", formula = "y ~ x", se = TRUE, color = "blue") +
-  facet_wrap(~ trait, scales = "free_y", ncol = 3) +
-  theme_bw(base_size = 15) +
-  theme(panel.grid.minor = element_blank(),
-        axis.text.x = element_text(size = 15),
-        axis.text.y = element_text(size = 15))
-RRR_plot_maj
-```
 
 
 
