@@ -774,6 +774,21 @@ summ$postsup= apply(coef_store, 2, function(x){
 
 print(summ)#Table S6
 ```
+
+#Testing for realized environmental correlations: Table S5
+
+#We use the RRR community axis derived from our main model "m" and calculate its correlation with phenotypic traits
+```{r, echo=FALSE}
+wRRR = getPostEstimate(models[[1]], "wRRR")
+
+rrr = as.matrix(models[[1]]$XRRRData) %*% t(as.matrix(wRRR$mean))# the community axis
+
+names(models[[1]]$XData)#the phenotypic traits
+
+cor.plap = cor(rrr[,1], models[[1]]$XData)
+cor.plap
+
+```
 #Co-flowering species weights: contribution of each animal-pollinated species to the composite community axis
 
 ```{r, echo=FALSE}
