@@ -685,6 +685,21 @@ points(pp_obs, col = rgb(0,0,0,0.7), pch = 16, cex = 0.6)
 #dev.off()
 ```
 
+#Testing for realized environmental correlations: Table S5
+
+#We use the RRR community axis derived from our main model "m" and calculate its correlation with phenotypic traits
+```{r, echo=FALSE}
+wRRR = getPostEstimate(models[[1]], "wRRR")
+
+rrr = as.matrix(models[[1]]$XRRRData) %*% t(as.matrix(wRRR$mean))# the community axis
+
+names(models[[1]]$XData)#the phenotypic traits
+
+cor.fmaj = cor(rrr[,1], models[[1]]$XData)
+cor.fmaj
+
+```
+
 #Co-flowering species weights: 
 ```{r}
 #Co-flowering species weights
