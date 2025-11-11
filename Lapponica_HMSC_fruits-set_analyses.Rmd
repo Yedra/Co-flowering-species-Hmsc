@@ -1,0 +1,1722 @@
+---
+title: "D.lapponica: Selection analyses via fruit set"
+author: '"Yedra Garcia"'
+date: "2023-12-06"
+output: html_document
+---
+
+```{r, eval=FALSE}
+library(tidyverse)
+library(dplyr)
+library(Hmsc)
+library(abind)
+library(mgcv)
+library(knitr)
+library(ggplot2)
+library(reshape2)
+library(data.table)
+library(ggpubr)
+library(forcats)
+```
+
+
+#Loading trait, fitness and co-flowering community data
+
+```{r, eval=FALSE}
+
+traitdata= read.csv("data/data_CRO/Gotland_trait_data.csv", header=T, sep= ";", dec=",") %>% mutate(individual= as.character(individual))%>%select(-c(18:23))#remove extra columns at the end
+
+commudata= read.csv("data/data_CRO/Gotland_community_data.csv", header= T, sep= ";", fileEncoding="latin1")%>% mutate(individual= as.character(individual), Primula_farinosa= as.integer(factor(Primula_farinosa)))%>% select(-c(57:60))##remove extra-columns
+
+```
+
+#Remove unnecessary columns and rename trait variables
+
+```{r pressure, echo=FALSE}
+dat= traitdata %>% select(-c(2:5, 14))%>%
+  rename(height= height_cm, flower_size= flower_size_mm, spur_length= spur_length_mm, spur_width= spur_width_mm, flowers= No_of_flowers)
+
+```
+
+Check for outliers
+
+```{r, fig.width= 7, fig.height= 6, echo= F, warning= F}
+
+par(mfrow= c(3,3))
+hist(dat$height)
+hist(dat$flower_size)
+hist(dat$spur_length)
+hist(dat$spur_width)
+hist(dat$flowers_open)
+hist(dat$flowers)
+
+data= dat %>% filter(!dat$flower_size <=2)
+```
+
+Phenotypic correlation matrix
+```{r, echo= F}
+Plap = cor(cbind(data$height, data$flower_size, data$spur_length, data$spur_width, data$flowers_open), use="pairwise")
+colnames(Plap) = rownames(Plap) = c("height", "flower_size", "spur_length", "spur_width",
+                              "open flowers")
+Plap
+```
+
+Summary statistics
+```{r, echo= F}
+summary_table= data.frame(
+  variable = names(data)[sapply(data, is.numeric)],
+  mean = sapply(data[, sapply(data, is.numeric)], mean, na.rm = TRUE),
+  SD = sapply(data[, sapply(data, is.numeric)], sd, na.rm = TRUE)
+)
+
+print(summary_table)
+```
+
+Merge trait-fruit data with community data
+
+```{r, echo= F, warning= F}
+all_data= merge(data, commudata, by= "individual", all.x= TRUE)
+
+```
+
+#Abundance and prevalence of co-flowering species
+
+```{r, fig.width= 7, fig.height= 4, echo= F}
+#Abundances of the co-flowering species
+sort(colSums(all_data[, 13:67]))
+
+coflow= all_data[, 13:67]
+preval= colMeans(coflow>0)
+mean(preval)
+abund= colSums(coflow)/colSums(coflow>0)
+
+par(mfcol=c(1,2))
+hist(preval)
+hist(abund)
+```
+
+####HMSC model
+
+To estimate the effects of co-flowering community composition on relative reproductive fitness (fruits produced) of D. lapponica, we set up a HMSC model in which we follow a reduced-rank regression approach (RRR) that reduces the number of dimensions of the animal-pollinated co-flowering species in the surrounding community and select those that best explain variation in the response (i.e., relative fruit set). In addition, we include as standard predictors in the HMSC model five phenotypic traits (plant height, flower size, spur length, spur width, number of open flowers). Thus, we also estimate the linear selection gradients for each trait while accounting for effects of the co-flowering community. 
+
+To test the suitability of our model "m" (community model), we compare with three alternative models: 1) a model that only includes the traits as predictors "m1", 2) a model that includes the traits and each animal-pollinated co-floweing species as predictors (Opedal et al 2022. J Evol Biol) "m2", and 3) a model that includes the traits and a reduced rank regression of the non-animal pollinated co-flowering community "m3" (i.e. a natural control using plant species for which we would not expect pollinator-mediated plant-plant interactions).
+
+```{r, echo= F}
+#HMSC
+indat= na.omit(all_data)##157 individuals with information on fruits produced
+
+#Define the response variable Y
+Y= cbind(indat$fruit_number)
+hist(Y)
+```
+
+
+```{r, echo= F}
+#Define XData: height, flower size, spur length, spur width, open flowers
+XData= indat[, c(2,6,7,8,11)]
+
+head(XData)
+```
+#Animal-pollinated co-flowering species:
+
+```{r, echo= F}
+coflo_data= indat[, 13:67]# co-flowering species
+
+## Animal-pollinated co-flowering species
+
+anim= c("Potentilla_erecta", "Primula_farinosa", "Pinguicula_vulgaris", "Succisa_pratensis", "Centaurea_jacea", "Prunella_grandiflora", "Prunella_vulgaris",
+"Prunella_grandifloraxvulgaris", "Polygala_amarella", "Centarium_littorale", "Parnassia_palustris", "Antennaria_dioica", "Linum_catharticum", "Galium_boreale",
+"Tetragonolobus_maritimus", "Scorzonera_humilis", "Tofieldia.calyculata", "Anthericum_ramosum", "Epipactis_palustris", "Platanthera_bifolia", "Gymnadenia_conopsea", "Gymnadenia_densiflora", "Gymnadenia_odoratissima", "Dactylorhiza_majalis_lapponica", "Inula.salicina", "Gentianella_uliginosa_cf", "Frangula_alnus_smallplant",
+"Euphrasia_salisburgensis", "Vaccinium_vitis.idaea", "Asperula_tinctoria",
+"Gymnadenia_sp", "Allium_schoenoprasum", "Leontodon_autumnalis", "Potentilla_reptans", "Calluna_vulgaris", "Dactylorhiza_incarnata_cruenta")
+
+```
+
+Define the XRRRData for the subset of the animal-pollinated species, and remove singletons (species only found close to one D. lapponica individual)
+
+```{r, echo=FALSE}
+XRRRData = coflo_data[, colnames(coflo_data) %in% anim]
+
+XRRRData = XRRRData[, match(anim, colnames(XRRRData))]
+head(XRRRData)
+
+sort(colSums(XRRRData))
+
+XRRRData = XRRRData[, colSums(XRRRData>=1) >1]
+length(XRRRData)#28 species in more than one sampling unit
+```
+
+Define the Xformula with the trait predictors (= XData)
+
+```{r}
+XFormula = as.formula(paste("~", paste0(colnames(XData), collapse=" + ")))
+XFormula
+
+```
+
+Define the XRRRformula with the animal-pollinated species (= XRRRData)
+
+```{r}
+XRRRFormula = as.formula(paste("~", " -1 + ", paste0(colnames(XRRRData), collapse=" + ")))
+XRRRFormula
+```
+
+Scale the XRRRData (the animal-pollinated co-flowering species)
+
+```{r}
+XRRRDataScaled = data.frame(scale(XRRRData))
+dim(XRRRData)
+```
+
+#1.2 Fit the HMSC models.
+
+#HMSC model with traits and the RRR of the animal-pollinated species as predictors (m)
+
+```{r}
+
+m = Hmsc(Y = as.matrix(Y/mean(Y)), XData=XData, XFormula=XFormula,
+         distr="normal", 
+         XRRRData=XRRRDataScaled, XRRRFormula=XRRRFormula, ncRRR=1, XRRRScale = TRUE)
+```
+
+#Alternative models:
+
+#HMSC only with traits as predictors (m1)
+
+```{r}
+m1 = Hmsc(Y = as.matrix(Y/mean(Y)), XData=XData, XFormula=XFormula,
+          distr="normal")
+```
+
+#HMSC with traits and each animal-pollinated species as predictors (m2)
+
+Here, we need another XData object (= XData2) that includes the traits and each animal-poll co-flowering species (XRRRData) and define an Xformula for it (= XFormula2)
+
+```{r}
+XData2 = data.frame(XData, XRRRData)
+XFormula2 = as.formula(paste("~", paste0(colnames(XData2), collapse=" + ")))
+XFormula2
+
+m2 = Hmsc(Y = as.matrix(Y/mean(Y)), XData=XData2, XFormula=XFormula2,
+          distr="normal")
+```
+
+#HMSC with traits and the RRR of the non-animal pollinated species as predictors (m3)
+
+Here, we need another XRRRData object (= XRRRData2) for the non-animal pollinated species. As we did before, we remove singletons and scale the XRRRRData2 object.
+
+Then we define the XRRRformula (XRRRFormula2)
+
+```{r}
+XRRRData2= coflo_data[!(colnames(coflo_data) %in% anim)]
+
+XRRRData2 = XRRRData2[, colSums(XRRRData2>=1) >1]
+
+XRRRDataScaled2 = data.frame(scale(XRRRData2))
+dim(XRRRData2)
+
+XRRRFormula2 = as.formula(paste("~", " -1 + ", paste0(colnames(XRRRData2), collapse=" + ")))
+
+XRRRFormula2
+
+m3 = Hmsc(Y = as.matrix(Y/mean(Y)), XData=XData, XFormula=XFormula,
+         distr="normal", XRRRData= XRRRDataScaled2, XRRRFormula=XRRRFormula2, ncRRR=1, XRRRScale = TRUE)
+```
+
+Now we set the sampling parameters and fit the four models.
+
+```{r, echo=FALSE}
+samples = 1000
+thin = 100
+transient = .5*(thin*samples)
+adaptNf = 0.4*(thin*samples)
+nChains = 1
+
+models= list(m, m1, m2, m3)
+for(i in 1:4){
+  models[[i]]= sampleMcmc(models[[i]], samples = samples, thin = thin, adaptNf=rep(adaptNf, m$nr), 
+               transient = transient, nChains = nChains)}
+
+#save(models, file ="analyses/models_fset_lap.RData")
+
+load(file ="analyses/models_fset_lap.RData")
+```
+
+##Check effective sample sizes
+
+```{r, echo=FALSE}
+
+post= convertToCodaObject(models[[1]], covNamesNumbers = c(T,F))
+post1= convertToCodaObject(models[[2]], covNamesNumbers = c(T,F))
+post2= convertToCodaObject(models[[3]], covNamesNumbers = c(T,F))
+post3= convertToCodaObject(models[[4]], covNamesNumbers = c(T,F))
+
+effectiveSize(post$Beta)
+
+```
+
+#Asess MCMC convergence and get posterior support for each model parameter including the co-flowering community axis (model "m")
+
+```{r}
+#Posterior support for the RRR animal-pollinated co-flowering community
+getPostEstimate(models[[1]], "Beta")
+
+postsup= getPostEstimate(models[[1]], "Beta")$support[2:7, ]
+
+postsup[which(postsup<0.5)] = 1 - postsup[which(postsup<0.5)]
+postsup
+```
+
+MCMC convergence
+
+```{r}
+plot(post$Beta[,1:7])
+```
+
+```{r}
+# Temp. posterior of wRRR# the animal-pollinated co-flowering species
+bind0 = function(...) {abind(..., along = 0)}
+postList = poolMcmcChains(models[[1]]$postList, chainIndex = 1:length(models[[1]]$postList), 
+                          start = 1, thin = 1)
+valList = lapply(postList, function(a) a[["wRRR"]])
+wRRR_post = do.call(bind0, valList)
+
+dim(wRRR_post)
+
+for(i in 1:28){
+  plot(wRRR_post[,1,i], type="l")
+}
+
+```
+
+#Model fitting
+
+Now we evaluate the explanatory power of the model "m" by computing the R\^2 values and compare with alternative models (m1, m2 and m3)
+
+```{r}
+
+MF_results= matrix(NA, nrow= 2, ncol= 4)
+for(i in 1:4){
+  m= models[[i]]
+  pred= computePredictedValues(m)
+        MF= evaluateModelFit(hM= m, predY = pred)
+        MF_results[1,i]= mean(MF$R2)
+}
+
+MF_results
+```
+
+Now we evaluate the predictive power of the model "m" and of the alternative models by using 5-fold cross validation
+
+```{r}
+partition= createPartition(m, nfolds=5)
+
+for(i in 1:4){
+  m= models[[i]]
+  pred_CV = computePredictedValues(m, partition)
+  MF_CV= evaluateModelFit(hM= m, predY = pred_CV)
+  MF_results[2, i]= mean(MF_CV$R2)
+}
+
+MF_results
+
+colnames(MF_results)= c("RRRco", "MR", "MRco", "RRRn")
+rownames(MF_results)=  c("MF", "MF_cV")
+
+MF_results= as.data.frame(MF_results)
+
+#save(MF_results, file="results/MF_fset_lap.RData")
+
+MF_results#Table 1
+```
+Next thing we will do is to estimate the partial regression coefficients for each trait, which correspond to the linear selection gradients through reproductive success, and for the co-flowering community axis.
+
+#Obtain linear selection gradients for model "m" (includes traits and the RRR of the co-flowering community)
+
+```{r}
+nX = ncol(models[[1]]$XData)
+nX
+
+#beta_raw_post = post$Beta[,2:(nX+1)][[1]] #posterior for betas
+beta_raw_post = post$Beta[,2:(5+1)][[1]]
+
+beta_var_post = matrix(NA, nrow=nrow(beta_raw_post), ncol=nX)
+for(i in 1:nX){
+  beta_var_post[,i] = beta_raw_post[,i]*sd(XData[,i])
+}
+
+beta_mean_post = matrix(NA, nrow=nrow(beta_raw_post), ncol=nX)
+for(i in 1:nX){
+  beta_mean_post[,i] = beta_raw_post[,i]*mean(XData[,i])
+}
+
+beta_raw = apply(beta_raw_post, 2, mean)
+beta_raw_lower = apply(beta_raw_post, 2, quantile, c(0.025))
+beta_raw_upper = apply(beta_raw_post, 2, quantile, c(0.975))
+
+#Variance-scaled betas
+beta_var = apply(beta_var_post, 2, mean)
+beta_var_lower = apply(beta_var_post, 2, quantile, c(0.025))
+beta_var_upper = apply(beta_var_post, 2, quantile, c(0.975))
+
+#Mean-scaled betas (this only applies to mean-scaled selection gradients, as the community axis is not on a ratio scale, and thus mean-scale is not meaningful)
+beta_mean = apply(beta_mean_post, 2, mean)
+beta_mean_lower = apply(beta_mean_post, 2, quantile, c(0.025))
+beta_mean_upper = apply(beta_mean_post, 2, quantile, c(0.975))
+
+resmat_RRR = data.frame(beta_raw = round(beta_raw, 3),
+                        L = round(beta_raw_lower, 3),
+                        U = round(beta_raw_upper, 3),
+                        beta_var = round(beta_var, 3),
+                        L = round(beta_var_lower, 3),
+                        U = round(beta_var_upper, 3),
+                        beta_mean = round(beta_mean*100, 3),
+                        L = round(beta_mean_lower, 3),
+                        U = round(beta_mean_upper, 3))
+
+betaRRR = post$Beta[,(nX+2):(models[[1]]$ncRRR+(nX+1))][[1]] #posterior for beta_RRR
+#betaRRR = post$Beta[,(5+2):(m$ncRRR+(5+1))][[1]] #posterior for beta_RRR
+length(betaRRR)
+
+# Adding the regression coefficient (B) for the animal-pollinated community axis"
+#For the community axis, only variance-scaled B is reported (is not on a ratio scale, mean-scaled not meaningful).
+
+# The anim-pollinated co-flowering community axis"
+dim(models[[1]]$XRRR)
+
+comp1_post = matrix(NA, nrow=length(betaRRR), ncol=models[[1]]$ny)
+for(i in 1:length(betaRRR)){
+  comp1_post[i,]=models[[1]]$XRRR %*% as.matrix((wRRR_post[i,1,]))
+}
+
+beta_comp1_post=NULL
+for(i in 1:1000){
+  beta_comp1_post[i]=betaRRR[i]*sd(comp1_post[i,])
+}
+
+resmat_RRR[nrow(resmat_RRR)+1,]=c("NA","NA","NA", 
+                 round(mean(beta_comp1_post), 3),
+                 round(quantile(beta_comp1_post, c(0.025)), 3),
+                 round(quantile(beta_comp1_post, c(0.975)), 3),
+                 "NA","NA","NA")
+kable(resmat_RRR) #The sign of the regression coefficient for the RRR on the community axis is arbitrary, here
+#negative (-0.13), so we multiply it by -1 for the sake of interpretation
+```
+
+
+# Calculating the corresponding slopes for the original variables (co-floweringn species) 
+```{r, echo=FALSE}
+betapost = post$Beta[,5:(models[[1]]$ncRRR+4)][[1]] #posterior for beta_RRR
+
+
+beta_raw_post = matrix(NA, nrow=length(betapost), ncol=models[[1]]$ncORRR)
+for(i in 1:length(betapost)){
+  beta_raw_post[i,] = t(as.matrix(wRRR_post[i,,])) * betapost[i] #Need matrix * for more than one RRR
+}
+
+beta_var_post = matrix(NA, nrow=length(betapost), ncol=models[[1]]$ncORRR)
+for(i in 1:models[[1]]$ncORRR){
+  beta_var_post[,i] = beta_raw_post[,i]*sd(models[[1]]$XRRRData[,i])
+}
+
+# Compute beta = wA for each posterior sample
+
+# Alternative if XRRRData scaled before model fitting
+
+beta_mean_post = matrix(NA, nrow=length(betapost), ncol=models[[1]]$ncORRR)
+for(i in 1:models[[1]]$ncORRR){
+  beta_mean_post[,i] = beta_raw_post[,i]*(mean(XRRRData[,i])/sd(XRRRData[,i]))
+}
+
+beta_raw = apply(beta_raw_post, 2, mean)
+beta_raw_lower = apply(beta_raw_post, 2, quantile, c(0.025))
+beta_raw_upper = apply(beta_raw_post, 2, quantile, c(0.975))
+
+beta_var = apply(beta_var_post, 2, mean)
+beta_var_lower = apply(beta_var_post, 2, quantile, c(0.025))
+beta_var_upper = apply(beta_var_post, 2, quantile, c(0.975))
+
+beta_mean = apply(beta_mean_post, 2, mean)
+beta_mean_lower = apply(beta_mean_post, 2, quantile, c(0.025))
+beta_mean_upper = apply(beta_mean_post, 2, quantile, c(0.975))
+
+betamat_RRR = data.frame(beta_raw = round(beta_raw, 3),
+                         lower = round(beta_raw_lower, 3),
+                         upper = round(beta_raw_upper, 3),
+                         beta_var = round(beta_var, 3),
+                         lower = round(beta_var_lower, 3),
+                         upper = round(beta_var_upper, 3),
+                         beta_mean = round(beta_mean*100, 3),
+                         L = round(beta_mean_lower*100, 3),
+                         U = round(beta_mean_upper*100, 3))
+rownames(betamat_RRR) = colnames(models[[1]]$XRRRData)
+
+betamat_RRR
+```
+
+
+```{r, echo=FALSE}
+betamat_plot= betamat_RRR
+betamat_plot$species= rownames(betamat_RRR)
+
+str(betamat_plot)
+
+ggplot(betamat_plot, aes(x = reorder(species, beta_var), y = beta_var)) +
+  geom_point() +
+  geom_errorbar(aes(ymin = lower.1, ymax = upper.1), width = 0.2) +
+  coord_flip() +
+  labs(x = "Co-flowering species", y = "Variance-scaled B",
+       title = "Slopes for original variables (co-flowering species)") +
+  theme_minimal()
+
+```
+
+#Co-flowering species weights: contribution of each animal-pollinated co-flowering species to the composite community axis
+```{r, echo=FALSE}
+par(mar = c(4, 12, 2, 2), xpd = TRUE)
+
+wRRR = getPostEstimate(models[[1]], "wRRR")
+
+#Because the sign of the regression coefficient (Beta) for the community axis was negative (and we multiplied it by -1 for the sake of interpretation), we also need to flip the wRRR to visualize the species weights correctly.
+ord= order(-wRRR$mean, decreasing = FALSE)
+
+out= barplot(-wRRR$mean[ord],
+               horiz = TRUE,
+               col = "darkgrey",
+               xlim = c(-1, 2),
+               las = 1,
+               xlab = "Co-flowering species weights")
+
+species_labels= gsub("_", " ", colnames(XRRRData)[ord])
+
+species_expr= parse(text = paste0("italic('", species_labels, "')"))
+
+text(x = -1.5, y = out,
+     labels = species_expr,
+     adj = 1, cex = 0.6)
+```
+
+#Selection gradients for model "m1" (only phenotypic traits)
+
+```{r, echo=FALSE}
+nX = ncol(models[[2]]$XData)
+nX
+
+#beta_raw_post = post$Beta[,2:(nX+1)][[1]] #posterior for betas
+beta_raw_post = post1$Beta[,2:(5+1)][[1]]
+
+head(beta_raw_post)
+
+beta_var_post = matrix(NA, nrow=nrow(beta_raw_post), ncol=nX)
+for(i in 1:nX){
+  beta_var_post[,i] = beta_raw_post[,i]*sd(XData[,i])
+}
+
+beta_mean_post = matrix(NA, nrow=nrow(beta_raw_post), ncol=nX)
+for(i in 1:nX){
+  beta_mean_post[,i] = beta_raw_post[,i]*mean(XData[,i])
+}
+
+beta_raw = apply(beta_raw_post, 2, mean)
+beta_raw_lower = apply(beta_raw_post, 2, quantile, c(0.025))
+beta_raw_upper = apply(beta_raw_post, 2, quantile, c(0.975))
+
+beta_var = apply(beta_var_post, 2, mean)
+beta_var_lower = apply(beta_var_post, 2, quantile, c(0.025))
+beta_var_upper = apply(beta_var_post, 2, quantile, c(0.975))
+
+beta_mean = apply(beta_mean_post, 2, mean)
+beta_mean_lower = apply(beta_mean_post, 2, quantile, c(0.025))
+beta_mean_upper = apply(beta_mean_post, 2, quantile, c(0.975))
+
+
+resmat_M1 = data.frame(beta_raw = round(beta_raw, 3),
+                        L = round(beta_raw_lower, 3),
+                        U = round(beta_raw_upper, 3),
+                        beta_var = round(beta_var, 3),
+                        L = round(beta_var_lower, 3),
+                        U = round(beta_var_upper, 3),
+                        beta_mean = round(beta_mean*100, 3),
+                        L = round(beta_mean_lower, 3),
+                        U = round(beta_mean_upper, 3))
+
+resmat_M1[nrow(resmat_M1)+1,]= rep(c("NA"), times= 9)
+
+
+kable(resmat_M1)
+```
+
+#Selection gradients for model "m2" (phenotypic traits and each co-flowering animal-poll species as
+#standard covariates)
+```{r, echo=FALSE}
+
+nX = ncol(models[[3]]$XData)
+nX
+
+beta_raw_post = post2$Beta[,2:(5+1)][[1]] #posterior for betas
+#beta_raw_post = post2$Beta[,2:(33+1)][[1]] 
+head(beta_raw_post)
+
+
+beta_var_post = matrix(NA, nrow=nrow(beta_raw_post), ncol=ncol(beta_raw_post))
+  for(i in 1:ncol(beta_raw_post)){
+    beta_var_post[,i] = beta_raw_post[,i]*sd(models[[3]]$XData[,i])
+  }
+  
+  beta_mean_post = matrix(NA, nrow=nrow(beta_raw_post), ncol=ncol(beta_raw_post))
+  for(i in 1:ncol(beta_raw_post)){
+    beta_mean_post[,i] = beta_raw_post[,i]*mean(models[[3]]$XData[,i])
+  }
+
+beta_raw = apply(beta_raw_post, 2, mean)
+beta_raw_lower = apply(beta_raw_post, 2, quantile, c(0.025))
+beta_raw_upper = apply(beta_raw_post, 2, quantile, c(0.975))
+
+beta_var = apply(beta_var_post, 2, mean)
+beta_var_lower = apply(beta_var_post, 2, quantile, c(0.025))
+beta_var_upper = apply(beta_var_post, 2, quantile, c(0.975))
+
+beta_mean = apply(beta_mean_post, 2, mean)
+beta_mean_lower = apply(beta_mean_post, 2, quantile, c(0.025))
+beta_mean_upper = apply(beta_mean_post, 2, quantile, c(0.975))
+
+
+resmat_M2 = data.frame(beta_raw = round(beta_raw, 3),
+                        L = round(beta_raw_lower, 3),
+                        U = round(beta_raw_upper, 3),
+                        beta_var = round(beta_var, 3),
+                        L = round(beta_var_lower, 3),
+                        U = round(beta_var_upper, 3),
+                        beta_mean = round(beta_mean*100, 3),
+                        L = round(beta_mean_lower, 3),
+                        U = round(beta_mean_upper, 3))
+resmat_M2[nrow(resmat_M2[,])+1,]= rep(c("NA"), times= 9)
+
+kable(resmat_M2)
+
+```
+#Selection gradients for model "m4" that includes phenotypic traits and the RRR of non-animal-pollinated species in the community
+
+```{r}
+nX = ncol(models[[4]]$XData)
+nX
+
+#beta_raw_post = post$Beta[,2:(nX+1)][[1]] #posterior for betas
+beta_raw_post = post3$Beta[,2:(5+1)][[1]]
+head(beta_raw_post)
+
+beta_var_post = matrix(NA, nrow=nrow(beta_raw_post), ncol=nX)
+for(i in 1:nX){
+  beta_var_post[,i] = beta_raw_post[,i]*sd(XData[,i])
+}
+
+beta_mean_post = matrix(NA, nrow=nrow(beta_raw_post), ncol=nX)
+for(i in 1:nX){
+  beta_mean_post[,i] = beta_raw_post[,i]*mean(XData[,i])
+}
+
+beta_raw = apply(beta_raw_post, 2, mean)
+beta_raw_lower = apply(beta_raw_post, 2, quantile, c(0.025))
+beta_raw_upper = apply(beta_raw_post, 2, quantile, c(0.975))
+
+beta_var = apply(beta_var_post, 2, mean)
+beta_var_lower = apply(beta_var_post, 2, quantile, c(0.025))
+beta_var_upper = apply(beta_var_post, 2, quantile, c(0.975))
+
+beta_mean = apply(beta_mean_post, 2, mean)
+beta_mean_lower = apply(beta_mean_post, 2, quantile, c(0.025))
+beta_mean_upper = apply(beta_mean_post, 2, quantile, c(0.975))
+
+resmat_M3 = data.frame(beta_raw = round(beta_raw, 3),
+                        L = round(beta_raw_lower, 3),
+                        U = round(beta_raw_upper, 3),
+                        beta_var = round(beta_var, 3),
+                        L = round(beta_var_lower, 3),
+                        U = round(beta_var_upper, 3),
+                        beta_mean = round(beta_mean*100, 3),
+                        L = round(beta_mean_lower, 3),
+                        U = round(beta_mean_upper, 3))
+#resmat_M3[nrow(resmat_M3[,])+1,]= rep(c("NA"), times= 9)
+
+#####
+betaRRR = post3$Beta[,(nX+2):(models[[4]]$ncRRR+(nX+1))][[1]] #posterior for beta_RRR
+#betaRRR = post$Beta[,(5+2):(m$ncRRR+(5+1))][[1]] #posterior for beta_RRR
+length(betaRRR)
+
+# The non-anim-pollinated co-flowering community axis"
+dim(models[[4]]$XRRR)
+
+# Temp. posterior of wRRR
+bind0 = function(...) {abind(..., along = 0)}
+postList = poolMcmcChains(models[[4]]$postList, chainIndex = 1:length(models[[4]]$postList), 
+                          start = 1, thin = 1)
+valList = lapply(postList, function(a) a[["wRRR"]])
+wRRR_postn = do.call(bind0, valList)
+
+comp1_post = matrix(NA, nrow=length(betaRRR), ncol=models[[4]]$ny)
+for(i in 1:length(betaRRR)){
+  comp1_post[i,]=models[[4]]$XRRR %*% as.matrix((wRRR_postn[i,1,]))
+}
+
+beta_comp1_post=NULL
+for(i in 1:1000){
+  beta_comp1_post[i]=betaRRR[i]*sd(comp1_post[i,])
+}
+
+resmat_M3[nrow(resmat_M3)+1,]=c("NA","NA","NA", 
+                 round(mean(beta_comp1_post), 3),
+                 round(quantile(beta_comp1_post, c(0.025)), 3),
+                 round(quantile(beta_comp1_post, c(0.975)), 3),
+                 "NA","NA","NA")
+kable(resmat_M3)#here again the sign of the effects of the non-animal-pollinated community is negative, so we multiply by -1 for the sake of interpretation
+```
+
+#Save betas from each model (Tables 1, 3, S4 and Fig 2)
+
+```{r}
+
+beta_fset_lap= list(resmat_RRR, resmat_M1, resmat_M2, resmat_M3)
+
+#save(beta_pol_lap, file="analyses/betas_fset_lap.RData")
+
+load(file= "analyses/betas_fset_lap.RData")
+
+```
+
+
+```{r, echo=FALSE}
+# Community axis
+wRRR = getPostEstimate(models[[1]], "wRRR")
+rrr = as.matrix(models[[1]]$XRRRData) %*% t(as.matrix(-wRRR$mean))
+
+com.axis= rrr[, 1]
+
+Xrrr_raw <- as.matrix(XRRRData)  # original unscaled abundances
+#rrr <- Xrrr_raw %*% t(as.matrix(wRRR$mean))
+#com.axis <- -rrr[, 1]
+
+species_names <- colnames(Xrrr_raw)
+n_species <- ncol(Xrrr_raw)
+
+# Layout: adjust rows/columns as needed
+ncol_layout <- 2
+#nrow_layout <- ceiling(n_species / ncol_layout)
+nrow_layout <- 2   # max 8 species per page
+par(mfrow = c(nrow_layout, ncol_layout), mar = c(4, 4, 2, 1))
+
+
+# Loop over species
+for(i in 1:n_species){
+  species_abun <- Xrrr_raw[, i]
+  
+  # Only positions where abundance > 0
+  present <- which(species_abun > 0)
+  
+  # Plot empty canvas
+  plot(range(com.axis), range(species_abun[present], 0), type = "n",
+       xlab = "Community axis",
+       ylab = "Abundance",
+       main = species_names[i])
+  
+  # Draw vertical lines representing abundance
+  if(length(present) > 0){
+    segments(x0 = com.axis[present],
+             y0 = 0,
+             x1 = com.axis[present],
+             y1 = species_abun[present],
+             col = "darkgrey",
+             lwd = 2)
+  }
+}
+```
+
+
+
+```{r}
+
+
+# --- Rename map ---
+rename_map <- c(
+  "Potentilla_spp" = "Potentilla_erecta",
+  "Dactylorhiza" = "Dactylorhiza_sp",
+  "Dactylorhiza_majalis_lapponica"= "Dactylorhiza_lapponica",
+  "Cardamines_spp" = "Cardamine_pratensis",
+  "Hyeracium_spp" = "Hyeracium_sp",
+  "Tofieldia.calyculata"= "Tofieldia_calyculata",
+  "Inula.salicina"= "Inula_salicina",
+  "Gentianella_uliginosa_cf"= "Gentianella_uliginosa",
+  "Frangula_alnus_smallplant"= "Frangula_alnus",
+  "Vaccinium_vitis.idaea"= "Vaccinium_vitis-idaea"
+)
+
+# --- Get species names and rename ---
+species_flap <- colnames(model2$XRRRData)
+species_flap <- replace(species_flap, species_flap %in% names(rename_map),
+                        rename_map[species_flap[species_flap %in% names(rename_map)]])
+species_fmaj <- colnames(model1$XRRRData)
+species_fmaj <- replace(species_fmaj, species_fmaj %in% names(rename_map),
+                        rename_map[species_fmaj[species_fmaj %in% names(rename_map)]])
+
+
+# --- Define the 3 species you want per focal species ---
+# Must match names in XRRRData after renaming
+species_lap <- c("Tofieldia_calyculata", "Potentilla_erecta", "Leontodon_autumnalis")
+species_maj <- c("Medicago_lupulina", "Potentilla_erecta", "Cardamine_pratensis")
+
+# --- Keep only species that exist in XRRRData ---
+species_lap <- species_lap[species_lap %in% species_flap]
+species_maj <- species_maj[species_maj %in% species_fmaj]
+
+# --- Indices for plotting ---
+idx_lap <- match(species_lap, species_flap)
+idx_maj <- match(species_maj, species_fmaj)
+
+# --- Compute community axes using flipped weights ---
+rrr_lap <- as.matrix(model2$XRRRData) %*% t(as.matrix(-getPostEstimate(model2, "wRRR")$mean))
+com.axis_lap <- rrr_lap[,1]
+rrr_maj <- as.matrix(model1$XRRRData) %*% t(as.matrix(-getPostEstimate(model1, "wRRR")$mean))
+com.axis_maj <- rrr_maj[,1]
+
+# --- SVG figure ---
+svg("coflowering_abundance_final.svg", width = 10, height = 8)
+par(mfcol = c(3,2), mar = c(4,4,3,2))  # column-wise filling, leave margin for species names
+
+# --- Left column: D. lapponica ---
+for (i in seq_along(idx_lap)) {
+  j <- idx_lap[i]
+  species_abun <- model2$XRRRData[, j]
+  present <- which(species_abun > 0)
+  ylim_species <- range(c(0, species_abun[present]))
+
+  # Only show x-axis label on bottom row
+  x_label <- ifelse(i == length(idx_lap), "Community axis", "")
+
+  plot(range(com.axis_lap), ylim_species, type="n",
+       xlab = x_label, ylab="Abundance",
+       main = bquote(italic(.(gsub("_"," ", species_lap[i])))),
+       axes=FALSE, cex.lab= 1.4, cex.main= 1.5)
+
+  axis(1, cex.axis= 1.2)
+  yticks <- unique(round(pretty(ylim_species),0))
+  axis(2, at=yticks, labels=yticks, las=1, cex.axis= 1.2)
+  box()
+
+# Abundance bars
+  if(length(present) > 0){
+    segments(x0=com.axis_lap[present], y0=0,
+             x1=com.axis_lap[present], y1=species_abun[present],
+             col="darkgrey", lwd=2)
+  }
+}
+# --- Right column: D. majalis ---
+for (i in seq_along(idx_maj)) {
+  j <- idx_maj[i]
+  species_abun <- model1$XRRRData[, j]
+  present <- which(species_abun > 0)
+  ylim_species <- range(c(0, species_abun[present]))
+
+  # Only show x-axis label on bottom row
+  x_label <- ifelse(i == length(idx_maj), "Community axis", "")
+
+  plot(range(com.axis_maj), ylim_species, type="n",
+       xlab = x_label, ylab="",
+       main = bquote(italic(.(gsub("_"," ", species_maj[i])))),
+       axes=FALSE, cex.lab=1.4, cex.main=1.5)
+
+  axis(1, cex.axis= 1.2)
+  yticks <- unique(round(pretty(ylim_species),0))
+  axis(2, at=yticks, labels=yticks, las=1, cex.axis= 1.2)
+  box()
+
+  if(length(present) > 0){
+    segments(x0=com.axis_maj[present], y0=0,
+             x1=com.axis_maj[present], y1=species_abun[present],
+             col="darkgrey", lwd=2)
+  }
+}
+  
+
+dev.off()
+
+
+```
+
+Version with 2 species only
+```{r}
+# --- Rename map ---
+rename_map <- c(
+  "Potentilla_spp" = "Potentilla_erecta",
+  "Dactylorhiza" = "Dactylorhiza_sp",
+  "Dactylorhiza_majalis_lapponica"= "Dactylorhiza_lapponica",
+  "Cardamines_spp" = "Cardamine_pratensis",
+  "Hyeracium_spp" = "Hyeracium_sp",
+  "Tofieldia.calyculata"= "Tofieldia_calyculata",
+  "Inula.salicina"= "Inula_salicina",
+  "Gentianella_uliginosa_cf"= "Gentianella_uliginosa",
+  "Frangula_alnus_smallplant"= "Frangula_alnus",
+  "Vaccinium_vitis.idaea"= "Vaccinium_vitis-idaea"
+)
+
+# --- Get species names and rename ---
+species_flap <- colnames(model2$XRRRData)
+species_flap <- replace(species_flap, species_flap %in% names(rename_map),
+                        rename_map[species_flap[species_flap %in% names(rename_map)]])
+species_fmaj <- colnames(model1$XRRRData)
+species_fmaj <- replace(species_fmaj, species_fmaj %in% names(rename_map),
+                        rename_map[species_fmaj[species_fmaj %in% names(rename_map)]])
+
+# --- Define two species per focal species (Potentilla_erecta removed) ---
+species_lap <- c("Tofieldia_calyculata", "Leontodon_autumnalis")
+species_maj <- c("Medicago_lupulina", "Cardamine_pratensis")
+
+# --- Keep only species that exist in XRRRData ---
+species_lap <- species_lap[species_lap %in% species_flap]
+species_maj <- species_maj[species_maj %in% species_fmaj]
+
+# --- Indices for plotting ---
+idx_lap <- match(species_lap, species_flap)
+idx_maj <- match(species_maj, species_fmaj)
+
+# --- Compute community axes using flipped weights ---
+rrr_lap <- as.matrix(model2$XRRRData) %*% t(as.matrix(-getPostEstimate(model2, "wRRR")$mean))
+com.axis_lap <- rrr_lap[,1]
+rrr_maj <- as.matrix(model1$XRRRData) %*% t(as.matrix(-getPostEstimate(model1, "wRRR")$mean))
+com.axis_maj <- rrr_maj[,1]
+
+# --- SVG figure (narrower for manuscript layout) ---
+svg("coflowering_abundance_2species.svg", width = 6.5, height = 6)
+par(mfcol = c(2,2), mar = c(4,4,3,1.5))  # 2 rows x 2 cols, column-wise fill
+
+# --- Left column: D. lapponica ---
+for (i in seq_along(idx_lap)) {
+  j <- idx_lap[i]
+  species_abun <- model2$XRRRData[, j]
+  present <- which(species_abun > 0)
+  ylim_species <- range(c(0, species_abun[present]))
+  x_label <- ifelse(i == length(idx_lap), "Community axis", "")
+
+  plot(range(com.axis_lap), ylim_species, type="n",
+       xlab = x_label, ylab="Abundance",
+       main = bquote(italic(.(gsub("_"," ", species_lap[i])))),
+       axes=FALSE, cex.lab=1.3, cex.main=1.4)
+
+  axis(1, cex.axis=1.1)
+  yticks <- unique(round(pretty(ylim_species),0))
+  axis(2, at=yticks, labels=yticks, las=1, cex.axis=1.1)
+  box()
+
+  if(length(present) > 0){
+    segments(x0=com.axis_lap[present], y0=0,
+             x1=com.axis_lap[present], y1=species_abun[present],
+             col="darkgrey", lwd=2)
+  }
+}
+
+# --- Right column: D. majalis ---
+for (i in seq_along(idx_maj)) {
+  j <- idx_maj[i]
+  species_abun <- model1$XRRRData[, j]
+  present <- which(species_abun > 0)
+  ylim_species <- range(c(0, species_abun[present]))
+  x_label <- ifelse(i == length(idx_maj), "Community axis", "")
+
+  plot(range(com.axis_maj), ylim_species, type="n",
+       xlab = x_label, ylab="",  # no y label on right column
+       main = bquote(italic(.(gsub("_"," ", species_maj[i])))),
+       axes=FALSE, cex.lab=1.3, cex.main=1.4)
+
+  axis(1, cex.axis=1.1)
+  yticks <- unique(round(pretty(ylim_species),0))
+  axis(2, at=yticks, labels=yticks, las=1, cex.axis=1.1)
+  box()
+
+  if(length(present) > 0){
+    segments(x0=com.axis_maj[present], y0=0,
+             x1=com.axis_maj[present], y1=species_abun[present],
+             col="darkgrey", lwd=2)
+  }
+}
+
+dev.off()
+
+```
+
+
+
+```{r}
+# --- SVG figure ---
+svg("coflowering_abundance_final_narrow.svg", width = 6.5, height = 8)  # narrower width
+par(mfcol = c(3,2),
+    mar = c(4,4,3,1.5),     # reduce right margin slightly
+    oma = c(0,0,0,0))       # no outer margins
+
+# --- Left column: D. lapponica ---
+for (i in seq_along(idx_lap)) {
+  j <- idx_lap[i]
+  species_abun <- model2$XRRRData[, j]
+  present <- which(species_abun > 0)
+  ylim_species <- range(c(0, species_abun[present]))
+  x_label <- ifelse(i == length(idx_lap), "Community axis", "")
+
+  plot(range(com.axis_lap), ylim_species, type="n",
+       xlab = x_label, ylab="Abundance",
+       main = bquote(italic(.(gsub("_"," ", species_lap[i])))),
+       axes=FALSE, cex.lab=1.3, cex.main=1.4)
+
+  axis(1, cex.axis=1.1)
+  yticks <- unique(round(pretty(ylim_species),0))
+  axis(2, at=yticks, labels=yticks, las=1, cex.axis=1.1)
+  box()
+
+  if(length(present) > 0){
+    segments(x0=com.axis_lap[present], y0=0,
+             x1=com.axis_lap[present], y1=species_abun[present],
+             col="darkgrey", lwd=2)
+  }
+}
+
+# --- Right column: D. majalis ---
+for (i in seq_along(idx_maj)) {
+  j <- idx_maj[i]
+  species_abun <- model1$XRRRData[, j]
+  present <- which(species_abun > 0)
+  ylim_species <- range(c(0, species_abun[present]))
+  x_label <- ifelse(i == length(idx_maj), "Community axis", "")
+
+  plot(range(com.axis_maj), ylim_species, type="n",
+       xlab = x_label, ylab="",  # no y label
+       main = bquote(italic(.(gsub("_"," ", species_maj[i])))),
+       axes=FALSE, cex.lab=1.3, cex.main=1.4)
+
+  axis(1, cex.axis=1.1)
+  yticks <- unique(round(pretty(ylim_species),0))
+  axis(2, at=yticks, labels=yticks, las=1, cex.axis=1.1)
+  box()
+
+  if(length(present) > 0){
+    segments(x0=com.axis_maj[present], y0=0,
+             x1=com.axis_maj[present], y1=species_abun[present],
+             col="darkgrey", lwd=2)
+  }
+}
+
+dev.off()
+
+```
+
+
+#Save data from model "m" to use in post-hoc models
+
+```{r}
+Xmat= as.matrix(models[[1]]$XData)    
+Yvec= as.numeric(models[[1]]$Y)  
+
+# Center and scale traits
+Xc= scale(Xmat, center = TRUE, scale = TRUE)
+traits_names= colnames(Xc)
+
+all_models.flap= list()
+
+for(i in seq_along(models)) {
+  m= models[[i]]
+  
+  # Check if model has RRR and it is not NULL
+  if("XRRRData" %in% names(m) && !is.null(m$XRRRData)) {
+    XRRRmat= scale(as.matrix(m$XRRRData), center = TRUE, scale = TRUE)
+    hasRRR= TRUE
+  } else {
+    XRRRmat= NA
+    hasRRR= FALSE
+  }
+  
+  # Store 
+  all_models.flap[[i]]= list(
+    mcmc = m,
+    XData = Xmat,              
+    XRRRDataScaled = XRRRmat,
+    Y = Yvec,                   
+    hasRRR = hasRRR
+  )
+}
+
+#saveRDS(all_models.flap, "analyses/models.fset_lap_fulldata.rds")
+
+```
+
+#Testing for an interaction between co-flowering community axis (model "m") and selection on traits (Table S6)
+
+#Run a post-hoc model over the posterior samples (1000) of the community axis from the HMSC model "m" and traits
+
+```{r}
+all_models.flap= readRDS("analyses/models.fset_lap_fulldata.rds")
+
+model= all_models.flap[[1]]
+
+# Ensure model has RRR
+if(!model$hasRRR) stop("This model has no RRR data!")
+
+XRRRmat= as.matrix(model$XRRRDataScaled) #co-flowering species
+Xmat= as.matrix(model$XData) #phenotypic traits
+traits_names= make.names(colnames(Xmat))
+Y= as.numeric(model$Y) #response variable (reproductive fitness)
+Xc= scale(Xmat)
+
+#Pool posterior chains and extract co-flowering species (RRR) weights
+postList= poolMcmcChains(model$mcmc$postList,
+                           chainIndex = 1:length(model$mcmc$postList),
+                           start = 1, thin = 1)
+
+bind0= function(...) abind(..., along = 0)
+valList= lapply(postList, function(a) a[["wRRR"]])
+wRRR_post= do.call(bind0, valList)
+nSamples= dim(wRRR_post)[1]
+
+# Compute RRR axes for each posterior sample (one axis per posterior sample)
+nInd= nrow(XRRRmat)
+rrr_post_flap= matrix(NA, nrow = nInd, ncol = nSamples)
+
+for(s in seq_len(nSamples)){
+  w_vec= wRRR_post[s, 1, ]
+  if(is.null(w_vec)) next
+  rrr_post_flap[, s]= XRRRmat %*% as.numeric(w_vec)
+}
+
+#Matrix to store coefficients
+coef_names= c("(Intercept)", paste0("trait_", traits_names), "axis", paste0("int_", traits_names))
+coef_store= matrix(NA, nrow = nSamples, ncol = length(coef_names), dimnames = list(NULL, coef_names))
+
+# Fit regression for each posterior sample
+for(s in seq_len(nSamples)){
+  axis_s= rrr_post_flap[, s]
+  if(all(is.na(axis_s))) next
+  axis_s_c= as.numeric(scale(axis_s))
+
+  df= data.frame(Y = Y, axis = axis_s_c, Xc)
+  
+  for(tr in traits_names){
+    df[[paste0("I_", tr, "_axis")]] <- df[[tr]] * df$axis
+  }
+
+  main_terms= paste(traits_names, collapse = " + ")
+  inter_terms= paste(paste0("I_", traits_names, "_axis"), collapse = " + ")
+  form= as.formula(paste0("Y ~ ", main_terms, " + axis + ", inter_terms))
+
+  fit= tryCatch(lm(form, data = df), error = function(e) NULL)
+  if(is.null(fit)) next
+  
+  coefs= coef(fit)
+  coef_store[s, "(Intercept)"]= if(!is.null(coefs["(Intercept)"])) coefs["(Intercept)"] else NA
+  coef_store[s, "axis"]= if(!is.null(coefs["axis"])) coefs["axis"] else NA
+
+  for(tr in traits_names){
+    trait_name= paste0("trait_", tr)
+    int_name= paste0("int_", tr)
+    inter_term= paste0("I_", tr, "_axis")
+    coef_store[s, trait_name]= if(!is.null(coefs[tr])) coefs[tr] else NA
+    coef_store[s, int_name]= if(!is.null(coefs[inter_term])) coefs[inter_term] else NA
+  }
+}
+
+# Summarize posterior distribution of regression coefficients
+#mean, median, credible intervals and posterior support
+summ= data.frame(
+  term = coef_names,
+  mean = apply(coef_store, 2, mean, na.rm = TRUE),
+  median = apply(coef_store, 2, median, na.rm = TRUE),
+  ci_lower = apply(coef_store, 2, quantile, probs = 0.025, na.rm = TRUE),
+  ci_upper = apply(coef_store, 2, quantile, probs = 0.975, na.rm = TRUE),
+  p_pos = apply(coef_store, 2, function(x) mean(x > 0, na.rm = TRUE)),
+  p_neg = apply(coef_store, 2, function(x) mean(x < 0, na.rm = TRUE)),
+  stringsAsFactors = FALSE
+)
+
+summ$postsup= apply(coef_store, 2, function(x){
+  ps= mean(x > 0, na.rm = TRUE)
+  if(is.na(ps)) return(NA_real_)
+  if(ps < 0.5) ps <- 1 - ps
+  return(ps)
+})
+
+print(summ)#Table S6
+
+```
+
+#Figure 4a: fitness surface, interaction between co-flowering community axis and selection on floral display
+
+```{r flap, fig.width=6, fig.height=6, dpi=300}
+
+#svg("fitlap.svg", height=6, width=6)
+
+cols= colorRampPalette(c("dodgerblue", "white", "deeppink"))(100)
+
+trait= "flowers_open"              
+model= all_models.flap[[1]] 
+
+Xmat= as.matrix(model$XData)
+Y= as.numeric(model$Y)
+
+#Scale traits
+Xc= scale(Xmat, center = TRUE, scale = TRUE)
+trait_mean= attr(Xc, "scaled:center")[trait]
+trait_sd= attr(Xc, "scaled:scale")[trait]
+
+#Community axis (from RRR posterior)
+axis_values= rowMeans(rrr_post_flap, na.rm = TRUE)
+axis_mean= mean(axis_values)
+axis_sd= sd(axis_values)
+
+#Grid for surface (raw values)
+trait_seq= seq(min(Xmat[, trait], na.rm = TRUE),
+                 max(Xmat[, trait], na.rm = TRUE), length.out = 50)
+axis_seq= seq(min(axis_values, na.rm = TRUE),
+                max(axis_values, na.rm = TRUE), length.out = 50)
+grid= expand.grid(trait_val = trait_seq, axis_val = axis_seq)
+
+#Scale grid
+grid$trait_scaled= (grid$trait_val - trait_mean) / trait_sd
+grid$axis_scaled= (grid$axis_val - axis_mean) / axis_sd
+
+#Predicted fitness surface
+coef_mean= colMeans(coef_store, na.rm = TRUE)
+grid$fit= with(grid,
+                 coef_mean["(Intercept)"] +
+                 coef_mean[paste0("trait_", trait)] * trait_scaled +
+                 coef_mean["axis"] * axis_scaled +
+                 coef_mean[paste0("int_", trait)] * trait_scaled * axis_scaled)
+
+zmat= matrix(grid$fit, nrow = length(trait_seq), ncol = length(axis_seq))
+
+#Map z values to colors
+z_range= range(zmat, na.rm = TRUE)
+z_scaled= round((zmat - z_range[1]) / diff(z_range) * 99) + 1
+surface_colors= cols[z_scaled]
+
+#Plot surface
+pmat= persp(trait_seq, axis_seq, zmat,
+              theta = 120, phi = 30, expand = 0.6,
+              col = surface_colors,
+              border = "grey90",      
+              ticktype = "detailed",
+              xlab = ifelse(trait=="flowers_open","Flowers open"),
+              ylab = "Community axis",
+              zlab = "Relative fitness")
+
+#Observed data points (raw units)
+ok= complete.cases(Xmat[, trait], axis_values, Y)
+x_obs= Xmat[ok, trait]
+y_obs= axis_values[ok]
+z_obs= Y[ok]
+
+#Predicted z for each observation (posterior mean model)
+z_pred= with(data.frame(
+  trait_scaled = (x_obs - trait_mean) / trait_sd,
+  axis_scaled  = (y_obs - axis_mean) / axis_sd
+), coef_mean["(Intercept)"] +
+   coef_mean[paste0("trait_", trait)] * trait_scaled +
+   coef_mean["axis"] * axis_scaled +
+   coef_mean[paste0("int_", trait)] * trait_scaled * axis_scaled)
+
+#Project to 2D plane for plotting
+pp_obs= trans3d(x_obs, y_obs, z_obs, pmat)
+pp_pred= trans3d(x_obs, y_obs, z_pred, pmat)
+
+#Draw vertical connectors (residual variation)
+segments(pp_obs$x, pp_obs$y, pp_pred$x, pp_pred$y,
+         col = rgb(0.3, 0.3, 0.3, 0.3), lwd = 1)
+
+#Overlay observed points
+points(pp_obs, col = rgb(0,0,0,0.7), pch = 16, cex = 0.6)
+
+#dev.off()
+
+```
+
+
+
+
+```{r, echo= FALSE}
+wRRR = getPostEstimate(models[[1]], "wRRR")
+
+
+rrr = as.matrix(models[[1]]$XRRRData) %*% t(as.matrix(wRRR$mean))
+head(rrr)
+gamdat = data.frame(W=models[[1]]$Y[,1], r1=rrr[,1], models[[1]]$XData)
+
+mod_int = gam(W ~ r1*scale(height) + r1*scale(flower_size) + r1*scale(spur_length) + r1*scale(spur_width)+ r1*scale(flowers_open), family=gaussian, data=gamdat)
+summary(mod_int)
+
+mod_com = gam(W ~ scale(height) + scale(flower_size) + scale(spur_length) + scale(spur_width)+ scale(flowers_open)+ scale(r1), family=gaussian, data=gamdat)
+summary(mod_com)
+
+mod_traits = gam(W ~ scale(height) + scale(flower_size) + scale(spur_length) + scale(spur_width)+ scale(flowers_open), family=gaussian, data=gamdat)
+summary(mod_traits)
+
+AIC(mod_traits, mod_com, mod_int)
+
+models[[1]]$XData$height
+
+cor(rrr[,1], models[[1]]$XData)
+```
+
+
+
+
+
+
+```{r, figure.height=6.8, figure.width=6.8}
+# Plotting the estimated fitness surface ####
+par(mfrow=c(1,1))
+par(mar=c(4,4,2,2))
+res = vis.gam(mod_int, c("flowers_open","r1"), plot.type="contour", type="response",
+              xlab="Flowers open",
+              ylab="Community axis",
+              main="", color="bw")+
+points(gamdat$flowers_open, gamdat$r1, col="grey", pch=16, cex=1*gamdat$W)
+```
+
+
+```{r, figure.height=6.8, figure.width=6.8}
+res = vis.gam(mod_int, c("flowers_open", "r1"), plot.type="perspective", type="response",
+              theta= 120,
+              xlab="Flowers open",
+              ylab="Community axis",
+              main="", color="bw") +
+  points(gamdat$flowers_open, gamdat$r1, col="grey", pch=16, cex=1 * gamdat$W)
+```
+
+
+```{r, echo= FALSE}
+
+wRRR = getPostEstimate(models[[4]], "wRRR")
+rrr = as.matrix(models[[4]]$XRRRData) %*% t(as.matrix(wRRR$mean))
+
+gamdat = data.frame(W=models[[4]]$Y[,1], r1=rrr[,1], models[[4]]$XData)
+
+mod_int = gam(W ~ r1*scale(height) + r1*scale(flower_size) + r1*scale(spur_length) + r1*scale(spur_width)+ r1*scale(flowers_open), family=gaussian, data=gamdat)
+summary(mod_int)
+
+mod_com = gam(W ~ scale(height) + scale(flower_size) + scale(spur_length) + scale(spur_width)+ scale(flowers_open)+ scale(r1), family=gaussian, data=gamdat)
+summary(mod_com)
+
+mod_traits = gam(W ~ scale(height) + scale(flower_size) + scale(spur_length) + scale(spur_width)+ scale(flowers_open), family=gaussian, data=gamdat)
+summary(mod_traits)
+
+mod_int = gam(W ~ r1*height + r1*flower_size + r1*spur_length + r1*spur_width+ r1*flowers_open, family=gaussian, data=gamdat)
+summary(mod_int)
+
+AIC(mod_traits, mod_com, mod_int)
+
+head(gamdat)
+```
+
+
+```{r}
+res = vis.gam(mod_int, c("flowers_open","r1"), plot.type="perspective", type="response", color= "cm",
+              theta= 120,
+              xlab="Flowers open",
+              ylab="Community axis",
+              zlab="Relative fitness",
+              main="", ticktype= "detailed")
+#points(gamdat$flowers_open, gamdat$r1, col="grey", pch=16, cex=1*gamdat$W)
+
+ok <- complete.cases(gamdat$flowers_open, gamdat$r1, gamdat$W)
+pts <- trans3d(x = gamdat$flowers_open[ok],
+               y = gamdat$r1[ok],
+               z = gamdat$W[ok],
+               pmat = res)  # 'res' contains the persp projection matrix
+
+points(pts, col = "black", pch = 16, cex = 0.5)
+
+```
+
+
+
+```{r}
+# Original names
+#all_models.fmaj= readRDS("analyses/models.fset_maj_fulldata.rds")
+
+species_fmaj <- colnames(all_models.fmaj[[1]]$XRRRData)
+species_flap <- colnames(all_models.flap[[1]]$XRRRData)
+
+
+# --- Rename some co-flowering species ---
+
+rename_map <- c(
+  "Potentilla_spp" = "Potentilla_erecta",
+  "Dactylorhiza" = "Dactylorhiza_sp",
+  "Dactylorhiza_majalis_lapponica"= "Dactylorhiza_lapponica",
+  "Cardamines_spp" = "Cardamine_pratensis",
+  "Hyeracium_spp" = "Hyeracium_sp",
+  "Tofieldia.calyculata"= "Tofieldia_calyculata",
+  "Inula.salicina"= "Inula_salicina", "Gentianella_uliginosa_cf"= "Gentianella_uliginosa",
+  "Frangula_alnus_smallplant"= "Frangula_alnus", "Vaccinium_vitis.idaea"= "Vaccinium_vitis-idaea")
+
+species_flap <- replace(species_flap, species_flap %in% names(rename_map),
+                        rename_map[species_flap[species_flap %in% names(rename_map)]])
+
+species_fmaj <- replace(species_fmaj, species_fmaj %in% names(rename_map),
+                        rename_map[species_fmaj[species_fmaj %in% names(rename_map)]])
+
+#setdiff(species_fmaj, names(rename_map))
+
+```
+
+
+
+```{r}
+# --- Prepare species weights for both focal species ---
+wRRR_fmaj <- getPostEstimate(model1, "wRRR")
+wRRR_flap <- getPostEstimate(model2, "wRRR")
+
+
+# --- Create the union of all co-flowering species ---
+species_all <- union(species_flap, species_fmaj)
+
+# --- Order species by F. lapponica weights when available ---
+order_flap <- match(species_flap, species_all)
+species_flap_ord <- species_flap[order(order_flap)]
+species_all_ord <- c(species_flap_ord, setdiff(species_all, species_flap_ord))
+
+# --- Align weights to this master list (fill missing with NA) ---
+get_weights <- function(species_all, species_sub, w_sub) {
+  w <- rep(NA, length(species_all))
+  idx <- match(species_sub, species_all)
+  w[idx] <- w_sub
+  return(w)
+}
+
+w_flap_all <- get_weights(species_all_ord, species_flap, wRRR_flap$mean)
+w_fmaj_all <- get_weights(species_all_ord, species_fmaj, wRRR_fmaj$mean)
+
+# --- Determine max x-axis limit ---
+max_width <- max(abs(c(w_flap_all, w_fmaj_all)), na.rm = TRUE)
+
+# --- Set up the SVG device ---
+svg("species_weights_baseR_union.svg", width = 10, height = 6)
+par(mfrow = c(1,2), mar = c(4, 12, 2, 2))  # 2 panels, wide left margin
+
+# --- LEFT PANEL: D. lapponica ---
+bar_y <- barplot(
+  w_flap_all, horiz = TRUE,
+  xlim = c(-max_width, max_width),
+  col = ifelse(is.na(w_flap_all), "white", "lightblue"),
+  border = "lightblue",
+  xlab = expression(italic("D. lapponica") ~ "co-flowering weights"),
+  names.arg = rep("", length(species_all_ord)),
+  las = 1
+)
+abline(v = 0, lty = 2)
+
+# Species labels (italic)
+species_expr <- lapply(gsub("_"," ", species_all_ord), function(x) bquote(italic(.(x))))
+text(x = -max_width*1.05, y = bar_y, labels = species_expr,
+     adj = 1, cex = 0.7, xpd = TRUE)
+
+# --- RIGHT PANEL: D. majalis ---
+barplot(
+  w_fmaj_all, horiz = TRUE,
+  xlim = c(-max_width, max_width),
+  col = ifelse(is.na(w_fmaj_all), "white", "darkgrey"),
+  border = "darkgrey",
+  xlab = expression(italic("D. majalis") ~ "co-flowering weights"),
+  names.arg = rep("", length(species_all_ord)),
+  yaxt = "n"
+)
+abline(v = 0, lty = 2)
+
+dev.off()
+```
+
+
+```{r}
+# --- Prepare species weights for both focal species ---
+wRRR_fmaj <- getPostEstimate(model1, "wRRR")$mean
+wRRR_flap <- getPostEstimate(model2, "wRRR")$mean
+
+# --- Flip weights ---
+wRRR_flap <- -wRRR_flap
+wRRR_fmaj  <- -wRRR_fmaj
+
+
+# --- Function to order by sign and magnitude ---
+order_by_sign_magnitude <- function(species, weights) {
+  pos_idx <- which(weights >= 0)
+  neg_idx <- which(weights < 0)
+  
+  # Order positive by descending weight
+  pos_order <- pos_idx[order(weights[pos_idx], decreasing = TRUE)]
+  # Order negative by descending absolute weight
+  neg_order <- neg_idx[order(abs(weights[neg_idx]), decreasing = TRUE)]
+  
+  c(species[pos_order], species[neg_order])
+}
+
+# --- Order each species list independently ---
+species_flap_ordered <- order_by_sign_magnitude(species_flap, wRRR_flap)
+weights_flap_ordered <- wRRR_flap[match(species_flap_ordered, species_flap)]
+
+species_fmaj_ordered <- order_by_sign_magnitude(species_fmaj, wRRR_fmaj)
+weights_fmaj_ordered <- wRRR_fmaj[match(species_fmaj_ordered, species_fmaj)]
+
+# --- Prepare italic labels ---
+labels_flap <- parse(text = paste0("italic('", gsub("_"," ", species_flap_ordered), "')"))
+labels_fmaj <- parse(text = paste0("italic('", gsub("_"," ", species_fmaj_ordered), "')"))
+
+# --- Symmetric x-axis ---
+max_width <- max(abs(c(weights_flap_ordered, weights_fmaj_ordered)), na.rm = TRUE)
+
+# --- Plot ---
+svg("species_weights_independent.svg", width = 12, height = 6)
+par(mfrow = c(1,2), mar = c(4, 12, 2, 8))  # wide right margin for fmaj labels
+
+# LEFT PANEL: D. lapponica
+bar_y <- barplot(
+  weights_flap_ordered, horiz = TRUE,
+  xlim = c(-max_width, max_width),
+  col = ifelse(weights_flap_ordered >=0, "lightblue", "lightpink"),
+  border = "black",
+  xlab = expression(italic("D. lapponica") ~ " co-flowering weights"),
+  names.arg = rep("", length(weights_flap_ordered)),
+  las = 1
+)
+abline(v = 0, lty = 2)
+text(x = -max_width*1.05, y = bar_y, labels = labels_flap, adj = 1, cex = 0.7, xpd = TRUE)
+
+# RIGHT PANEL: D. majalis
+bar_y2 <- barplot(
+  weights_fmaj_ordered, horiz = TRUE,
+  xlim = c(-max_width, max_width),
+  col = ifelse(weights_fmaj_ordered >=0, "darkgrey", "pink"),
+  border = "black",
+  xlab = expression(italic("D. majalis") ~ " co-flowering weights"),
+  names.arg = rep("", length(weights_fmaj_ordered)),
+  yaxt = "n"
+)
+abline(v = 0, lty = 2)
+text(x = max_width*1.05, y = bar_y2, labels = labels_fmaj, adj = 0, cex = 0.7, xpd = TRUE)
+
+dev.off()
+```
+
+
+```{r}
+
+# --- Prepare species weights for both focal species ---
+wRRR_fmaj <- getPostEstimate(model1, "wRRR")$mean
+wRRR_flap <- getPostEstimate(model2, "wRRR")$mean
+
+# --- Flip weights ---
+wRRR_flap <- -wRRR_flap
+wRRR_fmaj  <- -wRRR_fmaj
+
+
+# --- Function to order for barplot (positive on top, negative below) ---
+order_for_barplot <- function(species, weights) {
+  pos_idx <- which(weights >= 0)
+  neg_idx <- which(weights < 0)
+  
+  # Order within groups by magnitude
+  pos_order <- pos_idx[order(weights[pos_idx], decreasing = TRUE)]
+  neg_order <- neg_idx[order(abs(weights[neg_idx]), decreasing = TRUE)]
+  
+  rev(c(pos_order, neg_order))  # reverse so positive bars appear on top
+}
+
+# --- Order species ---
+idx_flap <- order_for_barplot(species_flap, wRRR_flap)
+species_flap_ordered <- species_flap[idx_flap]
+weights_flap_ordered <- wRRR_flap[idx_flap]
+
+idx_fmaj <- order_for_barplot(species_fmaj, wRRR_fmaj)
+species_fmaj_ordered <- species_fmaj[idx_fmaj]
+weights_fmaj_ordered <- wRRR_fmaj[idx_fmaj]
+
+# --- Prepare italic labels ---
+labels_flap <- parse(text = paste0("italic('", gsub("_"," ", species_flap_ordered), "')"))
+labels_fmaj <- parse(text = paste0("italic('", gsub("_"," ", species_fmaj_ordered), "')"))
+
+# --- Symmetric x-axis ---
+max_width <- max(abs(c(weights_flap_ordered, weights_fmaj_ordered)), na.rm = TRUE)
+
+# --- Plot ---
+svg("species_weights_independent_positive_top.svg", width = 12, height = 6)
+par(mfrow = c(1,2), mar = c(4, 12, 2, 8))  # wide right margin
+
+# LEFT PANEL: D. lapponica
+bar_y <- barplot(
+  weights_flap_ordered, horiz = TRUE,
+  xlim = c(-max_width, max_width),
+  col = ifelse(weights_flap_ordered >=0, "lightblue", "lightpink"),
+  border = "black",
+  xlab = expression(italic("D. lapponica") ~ " co-flowering weights"),
+  names.arg = rep("", length(weights_flap_ordered)),
+  las = 1
+)
+abline(v = 0, lty = 2)
+text(x = -max_width*1.05, y = bar_y, labels = labels_flap, adj = 1, cex = 0.7, xpd = TRUE)
+
+# RIGHT PANEL: D. majalis
+bar_y2 <- barplot(
+  weights_fmaj_ordered, horiz = TRUE,
+  xlim = c(-max_width, max_width),
+  col = ifelse(weights_fmaj_ordered >=0, "darkgrey", "pink"),
+  border = "black",
+  xlab = expression(italic("D. majalis") ~ " co-flowering weights"),
+  names.arg = rep("", length(weights_fmaj_ordered)),
+  yaxt = "n"
+)
+abline(v = 0, lty = 2)
+text(x = max_width*1.05, y = bar_y2, labels = labels_fmaj, adj = 0, cex = 0.7, xpd = TRUE)
+
+dev.off()
+
+
+```
+
+
+```{r, figure.height=6.8, figure.width=6.8}
+par(mar=c(4,6,2,2), xpd=T)
+out = barplot(sort(wRRR$mean, dec=F), xlim=c(-2,3), col="royalblue",
+              xlab="Coflowering species weights", las=1, horiz=T)+
+text(y=out, par("usr")[], labels = gsub("X","",colnames(XRRRData)[order(wRRR$beta_mean, decreasing=F)]), xpd = TRUE)
+text(y=out, labels= colnames(XRRRData)[order(wRRR$mean, decreasing=F)])  
+
+```
+
+
+```{r, fig.height= 5.8, fig.width= 7, echo= FALSE}
+beta_fset_lap= list(resmat_RRR, resmat_M1, resmat_M2, resmat_M3)
+
+beta_fset_lap
+
+#save(beta_fset_lap, file= "analyses/betas_fset_lap.RData")
+
+load(file= "analyses/betas_fset_lap.RData")
+
+mods= c("RRRco", "MR", "MRco", "RRRn")
+
+#Variance-scaled Betas
+
+summary_var = matrix(NA, nrow = 6, ncol = length(mods))
+for(i in 1:length(mods)){
+  summary_var[,i] = round(as.numeric(beta_fset_lap[[i]]$beta_var), 3)
+}
+
+
+summary_var
+colnames(summary_var) = mods
+rownames(summary_var) = rownames(beta_fset_lap[[1]])
+summary_var = t(summary_var)
+summary_var
+
+upper_var = matrix(NA, nrow = 6, ncol = length(mods))
+for(i in 1:length(mods)){
+  upper_var[,i] = round(as.numeric(beta_fset_lap[[i]]$U.1), 3)
+}
+
+colnames(upper_var) = mods
+rownames(upper_var) = rownames(beta_fset_lap[[1]])
+upper_var = t(upper_var)
+upper_var
+
+lower_var = matrix(NA, nrow = 6, ncol = length(mods))
+for(i in 1:length(mods)){
+  lower_var[,i] = round(as.numeric(beta_fset_lap[[i]]$L.1), 3)
+}
+
+colnames(lower_var) = mods
+rownames(lower_var) = rownames(beta_fset_lap[[1]])
+lower_var = t(lower_var)
+
+summary_var[,6] = summary_var[,6]*-1 
+lower_var[,6] = lower_var[,6]*-1
+upper_var[,6] = upper_var[,6]*-1
+summary_var
+
+bdf = data.frame(summary_var, lower_var, upper_var)
+names(bdf)= c("B_PlantHeight", "B_FlwSize", "B_SpurLength", "B_SpurWidth", "B_FlwOpen", "B_community", rep("Lower", times=6), rep("Upper", times=6))
+
+bdf <- cbind(model = rownames(bdf), bdf)
+library(reshape2)
+library(data.table)
+head(bdf)
+
+bdfm= melt(setDT(bdf), measure = patterns("^B", "^Lower", "^Upper"), value.name = c("Beta_var", "Lower", "Upper"), variable.name = "trait", variable.factor = "trait")
+
+head(bdfm)
+```
+
+
+```{r, fig.height= 5.8, fig.width= 7, echo= FALSE}
+bdf2= bdfm %>% mutate(trait= recode(trait, "1"= "Plant height", "2"= "Flower size", "3"= "Spur length", "4"= "Spur width", "5"= "Open flowers", "6"= "Community"), model= factor(model, levels= c("RRRco", "MR", "MRco", "RRRn")))
+
+bdf.lap= bdfm %>% mutate(trait= recode(trait, "1"= "Plant height", "2"= "Flower size", "3"= "Spur length", "4"= "Spur width", "5"= "Open flowers", "6"= "Community"), model= factor(model, levels= c("RRRco", "MR", "MRco", "RRRn")))
+
+
+bdf.lap
+```
+
+
+```{r, fig.height= 5.8, fig.width= 7, echo= FALSE}
+VARplot_fset_lap= ggplot(bdf2, aes(x= model, y=Beta_var, colour=factor(model))) + 
+  geom_pointrange(aes(ymin = Lower, ymax = Upper), linetype = "solid", size=0.75)+
+  #geom_errorbar(aes(ymin = Lower, ymax = Upper),  width=.75)+
+  labs(y= expression(beta ~ "variance-scaled coefficients"), x= expression(italic("Dactylorhiza lapponica"), size=12))+
+  #scale_y_continuous(breaks = c(-0.50, -0.25, 0, 0.25, 0.50, 0.75), limits=c(-0.50, 1))+
+  scale_y_continuous(breaks = c(-0.60, -0.40, -0.20, 0, 0.20, 0.40, 0.60, 0.80), limits=c(-0.60, 1))+
+   facet_wrap(~ trait, nrow = 1L, strip.position = "top")+
+  theme_bw(base_size = 15)+
+  theme(text = element_text(size=15), axis.text.x= element_blank(),  axis.ticks.x = element_blank(), legend.title= element_blank(), legend.position="top",panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank(), panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank(), strip.text = element_text(size= 12))+
+  geom_hline(yintercept=0, linetype="dashed", color = "black")
+
+VARplot_fset_lap
+
+```
+
+
+```{r}
+
+par(mfrow = c(1, 2),    # two panels side by side
+    mar = c(4, 8, 2, 2), 
+    xpd = TRUE)
+
+### --- Panel A: Focal species 1 (F. maj) ---
+#model1 <- models[[1]]
+wRRR1  <- getPostEstimate(model1, "wRRR")
+
+ord1 <- order(-wRRR1$mean, decreasing = FALSE)
+species_labels1 <- gsub("_", " ", colnames(model1$XRRRData)[ord1])
+species_expr1   <- parse(text = paste0("italic('", species_labels1, "')"))
+
+barplot(-wRRR1$mean[ord1],
+        horiz = TRUE, 
+        col = "darkgrey",
+        xlim = c(-1, 2),     # <-- same scale for both panels
+        las = 1, 
+        main = expression(italic("F. maj")),
+        xlab = "Co-flowering species weights")
+text(x = -1.5, y = seq_along(ord1),
+     labels = species_expr1, adj = 1, cex = 0.6)
+
+### --- Panel B: Focal species 2 (F. lap) ---
+#model2 <- models[[1]]
+wRRR2  <- getPostEstimate(model2, "wRRR")
+
+ord2 <- order(-wRRR2$mean, decreasing = FALSE)
+species_labels2 <- gsub("_", " ", colnames(model2$XRRRData)[ord2])
+species_expr2   <- parse(text = paste0("italic('", species_labels2, "')"))
+
+barplot(-wRRR2$mean[ord2],
+        horiz = TRUE, 
+        col = "darkgrey",
+        xlim = c(-1, 2),     # <-- same x-scale for visual comparability
+        las = 1, 
+        main = expression(italic("F. lap")),
+        xlab = "Co-flowering species weights")
+text(x = -1.5, y = seq_along(ord2),
+     labels = species_expr2, adj = 1, cex = 0.6)
+
+
+```
+
+
