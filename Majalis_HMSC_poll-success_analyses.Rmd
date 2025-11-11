@@ -1,0 +1,688 @@
+---
+title: 'D. majalis: Selection analyses via pollination success'
+author: '"Yedra Garcia"'
+date: "2023-12-08"
+output: html_document
+self_contained: no
+---
+
+```{r, eval=FALSE}
+library(tidyverse)
+library(dplyr)
+library(Hmsc)
+library(abind)
+library(mgcv)
+library(knitr)
+library(ggplot2)
+library(reshape2)
+library(data.table)
+library(ggpubr)
+library(forcats)
+```
+
+#Loading trait, fitness, co-flowering community and animal-poll species data
+
+```{r, eval=FALSE}
+
+traitdata_kn= read.csv("data/data_CRO/Complete_KN_traitdata.csv", header=T, sep= ";", dec=",") %>% mutate(individual= as.character(individual))
+
+fitdata_kn= read.csv("data/data_CRO/Complete_KN_fitnessdata.csv", header=T, sep= ";",) %>% mutate(individual= as.character(individual))#, pollinaria_removed=as.numeric(pollinaria_removed, na.rm = T))
+
+commudata_kn= read.csv("data/data_CRO/Complete_KN_communitydata.csv", header= T, sep= ";", fileEncoding="latin1")%>% mutate(individual= as.character(individual))
+
+```
+
+## Estimate visitation on each flower
+
+```{r, eval=FALSE}
+fitdata_kn= fitdata_kn%>%
+  select(-c(6:8))
+
+fitdata_kn= fitdata_kn %>% mutate(pollinaria_removed= as.numeric(2- pollinaria_remaining))
+
+fitdata_kn= fitdata_kn%>% mutate(fvisit= 1*((pollen_on_stigma+ pollinaria_removed)>0))
+```
+
+#Estimate poll success= number of flowers effectively visited (ie. with pollen deposited on stigma or one pollinarium removed)
+
+```{r, eval=FALSE}
+wdata_kn=fitdata_kn %>%
+  group_by(individual) %>%
+  summarise( n = sum(flower>0, na.rm=T),
+             visits = sum(fvisit, na.rm=T),
+             n_removed= sum(2-pollinaria_remaining, na.rm = T),
+             n_pollinated= sum(pollen_on_stigma, na.rm= T)) %>%
+  mutate(wfemale= n_pollinated/n, wmale= n_removed/(n*2), wvisit= visits/n)## Two pollinaria per flower
+         
+sum(wdata_kn$visits>0, na.rm = TRUE)
+
+summary(wdata_kn)
+```
+
+
+```{r, eval=FALSE}
+cor(wdata_kn$wmale, wdata_kn$wfemale)
+
+```
+
+## Average trait data per individual
+
+```{r, echo=FALSE}
+traitdata_kn= traitdata_kn%>%
+  select(-c(2,10:12))%>% rename(height= height_cm, flower_size= flower_size_mm, spur_length= spur_length_mm,
+       flowers_open= flowers_open, flowers= No_of_flowers) 
+names(traitdata_kn)
+
+#Average trait values for a few plants with subindividuals
+traitdata_knb<- traitdata_kn %>% 
+  group_by(individual, Patch, Species, Site, Period) %>% 
+  summarise_at(vars(height:flowers), funs(mean), na.rm=TRUE)%>% 
+  ungroup()
+```
+##Merge trait and fitness data
+
+```{r, echo=FALSE}
+dat_kn=merge(traitdata_knb, wdata_kn, all.x = TRUE, by = "individual")
+
+dat_kn= dat_kn%>% mutate(Patch= as.factor(Patch), Species= as.factor
+                         (Species), Period= as.factor(Period))
+```
+#Check for outliers and filter for D. majalis (period= "early)
+
+```{r, echo=FALSE}
+dat_kn_mj= dat_kn %>%
+  filter(Species== "MJ" & Period== "early")%>%
+  droplevels()
+
+par(mfrow=c(3,3))
+hist(dat_kn_mj$height)
+hist(dat_kn_mj$flowers_open)
+hist(dat_kn_mj$flowers)
+hist(dat_kn_mj$flower_size)
+hist(dat_kn_mj$spur_length)
+
+dat_kn_mj= dat_kn_mj%>%filter(height <= 30)
+```
+
+#Summary stats
+```{r, echo=FALSE}
+summary_table= data.frame(
+  variable = names(dat_kn_mj)[sapply(dat_kn_mj, is.numeric)],
+  mean = sapply(dat_kn_mj[, sapply(dat_kn_mj, is.numeric)], mean, na.rm = TRUE),
+  SD = sapply(dat_kn_mj[, sapply(dat_kn_mj, is.numeric)], sd, na.rm = TRUE)
+)
+
+print(summary_table)
+```
+## Phenotypic correlation matrix
+
+```{r, echo=FALSE}
+
+P_mj = cor(cbind(dat_kn_mj$height, dat_kn_mj$flower_size, dat_kn_mj$spur_length, dat_kn_mj$flowers_open, dat_kn_mj$wmale, dat_kn_mj$wfemale), use="pairwise")
+colnames(P_mj) = rownames(P_mj) = c("height", "flower_size", "spur_length",
+                              "open flowers", "removal", "deposition")
+
+P_mj
+
+```
+
+
+```{r, echo=FALSE}
+names(dat_kn_mj)
+summary_poll= data.frame(mean= apply(dat_kn_mj[,c(13:15)], 2, mean, na.rm=T),
+                         sd= apply(dat_kn_mj[, c(13:15)], 2, sd, na.rm=T),
+                         median= apply(dat_kn_mj[,c(13:15)], 2, median, na.rm=T),
+                         n_obs= apply(dat_kn_mj[, c(13:15)], 2, function(x) sum(!is.na(x), na.rm=T)),
+                         n_yes= apply(dat_kn_mj[, c(13:15)], 2, function(x) sum(x>0, na.rm=T)))
+summary_poll$cv= summary_poll$sd/ summary_poll$mean
+signif(summary_poll, 4)
+
+```
+
+#Load community data
+
+```{r, echo=FALSE}
+names(commudata_kn)
+
+commudata_kn= commudata_kn %>% select(-c(14,15))%>% rename(Patch= "patch")#remove 2 sp with #only presence abs data
+
+#Filter D. majalis
+commudata_mj= commudata_kn%>%
+  filter(Species== "MJ" & Period== "early")%>%
+  droplevels()
+```
+#Merge co-flowering community with trait-fit data
+```{r, echo=FALSE}
+all_mj= merge(dat_kn_mj, commudata_mj, by= c("individual", "Species", "Period", "Patch"), all.x= TRUE)
+
+#save(all_mj, file = "analyses/alldata_maj.RData")
+```
+#HMSC
+
+To estimate the effects of co-flowering community composition on relative pollination success of D. majalis we set up a HMSC model in which we follow a reduced-rank regression approach (RRR) that reduces the number of dimensions of the animal-pollinated co-flowering species in the surrounding community and select those that best explain variation in the response (i.e., relative pollination success). In addition, we include as standard predictors in the HMSC model four phenotypic traits (plant height, flower size, spur length, number of open flowers) and the number of flowers scored "n" to assess pollination success. Thus, we also estimate the linear selection gradients for each trait while accounting for effects of the co-flowering community. 
+
+To test the suitability of our model "m" (community model), we compare with two alternative models: 1) a model that only includes the traits as predictors "m1", and 2) a model that includes the traits and each animal-pollinated co-floweing species as predictors (Opedal et al 2022. J Evol Biol) "m2".
+
+
+```{r, echo=FALSE}
+indat= na.omit(all_mj)
+
+indat= indat %>%
+  filter(!Patch== "E")%>%
+  droplevels()##104 individuals
+```
+
+
+#Set random effects:Defining Patch as a random factor in the model
+```{r, echo=FALSE}
+study.Design= data.frame(patch= indat$Patch)
+study.Design$patch= as.factor(study.Design$patch)
+
+head(study.Design)
+```
+
+#Define response Y variable (relative pollination success) and 
+```{r, echo=FALSE}
+Y= cbind(indat$visits)
+head(Y)
+hist(Y)
+```
+
+#Define XData (phenotypic traits)
+```{r, echo=FALSE}
+XData= indat[, c(6:9, 12)]# Here, we include "n" (flowers scored) and open flowers because they were not the same
+head(XData)
+```
+
+#Select the animal pollinated co-flowering species
+
+```{r, echo=FALSE}
+coflo_data= indat[, c(19:26, 28:30)]# co-flowering species
+XRRRData= coflo_data
+
+sort(colSums(XRRRData))
+
+XRRRData = XRRRData[,colSums(XRRRData>=1) >1]
+names(XRRRData)
+head(XRRRData)
+```
+
+#Define the Xformula with the trait predictors (= XData)
+```{r, echo=FALSE}
+XFormula = as.formula(paste("~", paste0(colnames(XData), collapse=" + ")))
+XFormula
+```
+#Define the XRRRformula with the animal-pollinated species (= XRRRData) 
+
+```{r, eval=FALSE}
+XRRRFormula = as.formula(paste("~", " -1 + ", paste0(colnames(XRRRData), collapse=" + ")))
+XRRRFormula
+```
+
+#Scale the XRRRData (the animal-poll co-flowering community)
+```{r, eval=FALSE}
+XRRRDataScaled = data.frame(scale(XRRRData))
+dim(XRRRData)
+```
+Fit the HMSC models.In this case all models include Patch as a random level factor
+
+Define Patch as random factor in the models
+```{r}
+rL = HmscRandomLevel(units = unique(study.Design$patch))
+```
+
+#HMSC with traits and the RRR of the animal-pollinated species as predictors (m)
+
+```{r, eval=FALSE}
+m = Hmsc(Y = as.matrix(Y/mean(Y)), XData=XData, XFormula=XFormula,
+         XRRRData=XRRRDataScaled, XRRRFormula=XRRRFormula, ncRRR=1, XRRRScale = TRUE,
+         studyDesign = study.Design, ranLevels = list("patch"= rL),  distr= "normal")
+```
+#Alternative models:
+
+#HMSC model "m1" with only traits as predictors (m1)
+
+```{r, eval=FALSE}
+m1 = Hmsc(Y = as.matrix(Y/mean(Y)), XData=XData, XFormula=XFormula, studyDesign = study.Design, ranLevels = list("patch"= rL),
+          distr="normal")
+```
+
+#HMSC model "m2" with traits and each animal-pollinated co-flowering species as predictors (m2)
+
+Here, we need another XData object (= XData2) that includes the traits and each animal-poll co-flowering species (XRRRData) and define an Xformula for it (= XFormula2)
+```{r}
+XData2 = data.frame(XData, XRRRData)
+XFormula2 = as.formula(paste("~", paste0(colnames(XData2), collapse=" + ")))
+XFormula2
+```
+The model:
+```{r, eval=FALSE}
+m2 = Hmsc(Y = as.matrix(Y/mean(Y)), XData=XData2, XFormula=XFormula2, studyDesign = study.Design, ranLevels = list("patch"= rL),
+          distr="normal")
+```
+
+#Set the sampling parameters and fit the three models.
+
+```{r, echo=FALSE}
+samples = 1000
+thin = 100
+transient = .5*(thin*samples)
+adaptNf = 0.4*(thin*samples)
+nChains = 1
+
+models= list(m, m1, m2)
+for(i in 1:3){
+  models[[i]]= sampleMcmc(models[[i]], samples = samples, thin = thin, adaptNf=rep(adaptNf, m$nr), 
+               transient = transient, nChains = nChains)}
+
+#save(models, file ="analyses/models_pollsuccess-o_maj.RData")
+
+load(file ="analyses/models_pollsuccess-o_maj.RData")
+
+```
+
+#Check effective sample sizes
+```{r, echo=FALSE}
+post= convertToCodaObject(models[[1]], covNamesNumbers = c(T,F))
+post1= convertToCodaObject(models[[2]], covNamesNumbers = c(T,F))
+post2= convertToCodaObject(models[[3]], covNamesNumbers = c(T,F))
+
+effectiveSize(post$Beta)
+```
+
+
+```{r, echo=FALSE}
+#Effective sample size for the random factor (patch)
+esOmega = effectiveSize(post$Omega[[1]])
+summary(esOmega)
+```
+
+MCMC convergence
+
+```{r, echo=FALSE}
+plot(post$Beta[,1:7])
+```
+
+
+```{r, echo=FALSE}
+# Temp. posterior of wRRR# animal-pollinated co-flowering species
+bind0 = function(...) {abind(..., along = 0)}
+postList = poolMcmcChains(models[[1]]$postList, chainIndex = 1:length(models[[1]]$postList), 
+                          start = 1, thin = 1)
+valList = lapply(postList, function(a) a[["wRRR"]])
+wRRR_post = do.call(bind0, valList)
+
+dim(wRRR_post)
+
+for(i in 1:8){
+  plot(wRRR_post[,1,i], type="l")
+}
+
+```
+
+#Posterior support for each trait and the RRR on the animal-pollinated co-flowering community
+
+```{r, echo=FALSE}
+getPostEstimate(models[[1]], "Beta")
+
+postsup= getPostEstimate(models[[1]], "Beta")$support[2:7, ]
+
+postsup[which(postsup<0.5)] = 1 - postsup[which(postsup<0.5)]
+postsup
+
+```
+
+#Model fitting
+
+Now we evaluate the explanatory power of the model "m" by computing the R^2 values and compare with alternative models (m1, and m2)
+```{r, echo=FALSE}
+MF_results= matrix(NA, nrow= 2, ncol= 3)
+for(i in 1:3){
+  m= models[[i]]
+  pred= computePredictedValues(m)
+        MF= evaluateModelFit(hM= m, predY = pred)
+        MF_results[1,i]= mean(MF$R2)
+}
+
+MF_results
+```
+
+Now we evaluate the predictive power of the model "m" and of the alternative models by using 5-fold cross validation
+
+```{r, echo=FALSE}
+partition= createPartition(m, nfolds=5)
+
+for(i in 1:3){
+  m= models[[i]]
+  pred_CV = computePredictedValues(m, partition)
+  MF_CV= evaluateModelFit(hM= m, predY = pred_CV)
+  MF_results[2, i]= mean(MF_CV$R2)
+}
+
+MF_results
+
+colnames(MF_results)= c("RRRco", "MR", "MRco")
+rownames(MF_results)=  c("MF", "MF_cV")
+
+MF_results= as.data.frame(MF_results)
+
+#save(MF_results, file="results/MF_pollsuccess-o_maj.RData")
+
+MF_results#Table 1
+
+```
+Next thing we will do is to estimate the partial regression coefficients for each trait, which correspond to the linear selection gradients through pollination success, and for the co-flowering community axis.
+
+#Obtain linear selection gradients for main model "m" (includes traits and the RRR of the co-flowering community)
+
+```{r, echo=FALSE}
+
+nX = ncol(models[[1]]$XData)
+nX
+
+#beta_raw_post = post$Beta[,2:(nX+1)][[1]] #posterior for betas
+beta_raw_post = post$Beta[,2:(5+1)][[1]]
+head(beta_raw_post)
+
+#variance_scaled betas
+beta_var_post = matrix(NA, nrow=nrow(beta_raw_post), ncol=nX)
+for(i in 1:nX){
+  beta_var_post[,i] = beta_raw_post[,i]*sd(XData[,i])
+}
+
+#mean-scaled betas (this only applies for traits, as the community axis is not on a ratio scale, mean-scale not meaningful)
+beta_mean_post = matrix(NA, nrow=nrow(beta_raw_post), ncol=nX)
+for(i in 1:nX){
+  beta_mean_post[,i] = beta_raw_post[,i]*mean(XData[,i])
+}
+
+#Credible intervals
+beta_raw = apply(beta_raw_post, 2, mean)
+beta_raw_lower = apply(beta_raw_post, 2, quantile, c(0.025))
+beta_raw_upper = apply(beta_raw_post, 2, quantile, c(0.975))
+
+beta_var = apply(beta_var_post, 2, mean)
+beta_var_lower = apply(beta_var_post, 2, quantile, c(0.025))
+beta_var_upper = apply(beta_var_post, 2, quantile, c(0.975))
+
+beta_mean = apply(beta_mean_post, 2, mean)
+beta_mean_lower = apply(beta_mean_post, 2, quantile, c(0.025))
+beta_mean_upper = apply(beta_mean_post, 2, quantile, c(0.975))
+
+resmat_RRR = data.frame(beta_raw = round(beta_raw, 3),
+                        L = round(beta_raw_lower, 3),
+                        U = round(beta_raw_upper, 3),
+                        beta_var = round(beta_var, 3),
+                        L = round(beta_var_lower, 3),
+                        U = round(beta_var_upper, 3),
+                        beta_mean = round(beta_mean*100, 3),
+                        L = round(beta_mean_lower, 3),
+                        U = round(beta_mean_upper, 3))
+
+betaRRR = post$Beta[,(nX+2):(models[[1]]$ncRRR+(nX+1))][[1]] #posterior for beta_RRR
+#betaRRR = post$Beta[,(5+2):(m$ncRRR+(5+1))][[1]] #posterior for beta_RRR
+length(betaRRR)
+
+# The anim-pollinated co-flowering community axis"
+dim(models[[1]]$XRRR)
+
+comp1_post = matrix(NA, nrow=length(betaRRR), ncol=m$ny)
+for(i in 1:length(betaRRR)){
+  comp1_post[i,]=models[[1]]$XRRR %*% as.matrix((wRRR_post[i,1,]))
+}
+
+beta_comp1_post=NULL#We only report the variance-scale coefficient for the community axis (is not on a ratio scale, mean-scale is not meaningful)
+for(i in 1:1000){
+  beta_comp1_post[i]=betaRRR[i]*sd(comp1_post[i,])
+}
+
+resmat_RRR[nrow(resmat_RRR)+1,]=c("NA","NA","NA", 
+                 round(mean(beta_comp1_post), 3),
+                 round(quantile(beta_comp1_post, c(0.025)), 3),
+                 round(quantile(beta_comp1_post, c(0.975)), 3),
+                 "NA", "NA","NA")
+
+kable(resmat_RRR)#as the sign of the regression coefficient for the community axis is arbitrary (here negative= -0.148),#we multiply to -1 for the sake of interpretation
+```
+
+#Obtain the selection gradients for model "m1" (only includes phenotypic traits)
+
+```{r, echo=FALSE}
+nX = ncol(models[[2]]$XData)
+nX
+
+#beta_raw_post = post$Beta[,2:(nX+1)][[1]] #posterior for betas
+beta_raw_post = post1$Beta[,2:(5+1)][[1]]
+
+head(beta_raw_post)
+
+beta_var_post = matrix(NA, nrow=nrow(beta_raw_post), ncol=nX)
+for(i in 1:nX){
+  beta_var_post[,i] = beta_raw_post[,i]*sd(XData[,i])
+}
+
+beta_mean_post = matrix(NA, nrow=nrow(beta_raw_post), ncol=nX)
+for(i in 1:nX){
+  beta_mean_post[,i] = beta_raw_post[,i]*mean(XData[,i])
+}
+
+beta_raw = apply(beta_raw_post, 2, mean)
+beta_raw_lower = apply(beta_raw_post, 2, quantile, c(0.025))
+beta_raw_upper = apply(beta_raw_post, 2, quantile, c(0.975))
+
+beta_var = apply(beta_var_post, 2, mean)
+beta_var_lower = apply(beta_var_post, 2, quantile, c(0.025))
+beta_var_upper = apply(beta_var_post, 2, quantile, c(0.975))
+
+beta_mean = apply(beta_mean_post, 2, mean)
+beta_mean_lower = apply(beta_mean_post, 2, quantile, c(0.025))
+beta_mean_upper = apply(beta_mean_post, 2, quantile, c(0.975))
+
+
+resmat_M1 = data.frame(beta_raw = round(beta_raw, 3),
+                        L = round(beta_raw_lower, 3),
+                        U = round(beta_raw_upper, 3),
+                        beta_var = round(beta_var, 3),
+                        L = round(beta_var_lower, 3),
+                        U = round(beta_var_upper, 3),
+                        beta_mean = round(beta_mean*100, 3),
+                        L = round(beta_mean_lower, 3),
+                        U = round(beta_mean_upper, 3))
+
+resmat_M1[nrow(resmat_M1)+1,]= rep(c("NA"), times= 9)
+
+
+kable(resmat_M1)
+```
+
+
+#Selection gradients for model "m2" (includes phenotypic traits and each animal-pollinated co-flowering species) as predictors
+
+```{r, echo=FALSE}
+nX = ncol(models[[3]]$XData)
+nX
+
+beta_raw_post = post2$Beta[,2:(5+1)][[1]] #posterior for betas
+
+head(beta_raw_post)
+
+
+beta_var_post = matrix(NA, nrow=nrow(beta_raw_post), ncol=ncol(beta_raw_post))
+  for(i in 1:ncol(beta_raw_post)){
+    beta_var_post[,i] = beta_raw_post[,i]*sd(models[[3]]$XData[,i])
+  }
+  
+  beta_mean_post = matrix(NA, nrow=nrow(beta_raw_post), ncol=ncol(beta_raw_post))
+  for(i in 1:ncol(beta_raw_post)){
+    beta_mean_post[,i] = beta_raw_post[,i]*mean(models[[3]]$XData[,i])
+  }
+
+beta_raw = apply(beta_raw_post, 2, mean)
+beta_raw_lower = apply(beta_raw_post, 2, quantile, c(0.025))
+beta_raw_upper = apply(beta_raw_post, 2, quantile, c(0.975))
+
+beta_var = apply(beta_var_post, 2, mean)
+beta_var_lower = apply(beta_var_post, 2, quantile, c(0.025))
+beta_var_upper = apply(beta_var_post, 2, quantile, c(0.975))
+
+beta_mean = apply(beta_mean_post, 2, mean)
+beta_mean_lower = apply(beta_mean_post, 2, quantile, c(0.025))
+beta_mean_upper = apply(beta_mean_post, 2, quantile, c(0.975))
+
+
+resmat_M2 = data.frame(beta_raw = round(beta_raw, 3),
+                        L = round(beta_raw_lower, 3),
+                        U = round(beta_raw_upper, 3),
+                        beta_var = round(beta_var, 3),
+                        L = round(beta_var_lower, 3),
+                        U = round(beta_var_upper, 3),
+                        beta_mean = round(beta_mean*100, 3),
+                        L = round(beta_mean_lower, 3),
+                        U = round(beta_mean_upper, 3))
+resmat_M2[nrow(resmat_M2)+1,]= rep(c("NA"), times= 9)
+
+kable(resmat_M2)
+
+```
+
+#Save betas from each model (Tables 1, 2, S3 and Fig. 2)
+```{r, echo=FALSE}
+beta_pol_maj= list(resmat_RRR, resmat_M1, resmat_M2)
+
+#save(beta_pol_maj, file= "analyses/betas_poll_maj.RData")
+
+```
+
+#Save data to use in post-hoc models
+```{r, echo=FALSE}
+Xmat= as.matrix(models[[1]]$XData)    
+Yvec= as.numeric(models[[1]]$Y)  
+
+# Center and scale traits
+Xc= scale(Xmat, center = TRUE, scale = TRUE)
+traits_names= colnames(Xc)
+
+all_models.pmaj= list()
+
+for(i in seq_along(models)) {
+  m= models[[i]]
+  
+  # Check if model has RRR and it is not NULL
+  if("XRRRData" %in% names(m) && !is.null(m$XRRRData)) {
+    XRRRmat= scale(as.matrix(m$XRRRData), center = TRUE, scale = TRUE)
+    hasRRR= TRUE
+  } else {
+    XRRRmat= NA
+    hasRRR= FALSE
+  }
+  
+  # Store 
+  all_models.pmaj[[i]]= list(
+    mcmc = m,
+    XData = Xmat,              
+    XRRRDataScaled = XRRRmat,
+    Y = Yvec,                   
+    hasRRR = hasRRR
+  )
+}
+
+#saveRDS(all_models.pmaj, "analyses/models.poll_maj_fulldata.rds")
+```
+
+#Testing for an interaction between co-flowering community axis and selection (Table S7)
+
+#Run a post-hoc model over all the posterior samples (1000) of the community axis from the HMSC model "m" and each phenotypic trait
+```{r, echo=FALSE}
+all_models.pmaj= readRDS("analyses/models.poll_maj_fulldata.rds")
+
+model= all_models.pmaj[[1]]
+
+# Ensure model has RRR
+if(!model$hasRRR) stop("This model has no RRR data!")
+
+XRRRmat= as.matrix(model$XRRRDataScaled)
+Xmat= as.matrix(model$XData)
+traits_names= make.names(colnames(Xmat))
+Y= as.numeric(model$Y)
+Xc= scale(Xmat)
+
+# Posterior weights
+postList= poolMcmcChains(model$mcmc$postList,
+                           chainIndex = 1:length(model$mcmc$postList),
+                           start = 1, thin = 1)
+
+bind0= function(...) abind(..., along = 0)
+valList= lapply(postList, function(a) a[["wRRR"]])
+wRRR_post= do.call(bind0, valList)
+nSamples= dim(wRRR_post)[1]
+
+# Compute RRR axes
+nInd= nrow(XRRRmat)
+rrr_post_pmaj= matrix(NA, nrow = nInd, ncol = nSamples)
+
+for(s in seq_len(nSamples)){
+  w_vec= wRRR_post[s, 1, ]
+  if(is.null(w_vec)) next
+  rrr_post_pmaj[, s]= XRRRmat %*% as.numeric(w_vec)
+}
+
+# Coefficient storage
+coef_names= c("(Intercept)", paste0("trait_", traits_names), "axis", paste0("int_", traits_names))
+coef_store= matrix(NA, nrow = nSamples, ncol = length(coef_names), dimnames = list(NULL, coef_names))
+
+# Fit regressions for each posterior sample
+for(s in seq_len(nSamples)){
+  axis_s= rrr_post_pmaj[, s]
+  if(all(is.na(axis_s))) next
+  axis_s_c= as.numeric(scale(axis_s))
+
+  df= data.frame(Y = Y, axis = axis_s_c, Xc)
+  
+  for(tr in traits_names){
+    df[[paste0("I_", tr, "_axis")]] <- df[[tr]] * df$axis
+  }
+
+  main_terms= paste(traits_names, collapse = " + ")
+  inter_terms= paste(paste0("I_", traits_names, "_axis"), collapse = " + ")
+  form= as.formula(paste0("Y ~ ", main_terms, " + axis + ", inter_terms))
+
+  fit= tryCatch(lm(form, data = df), error = function(e) NULL)
+  if(is.null(fit)) next
+  
+  coefs= coef(fit)
+  coef_store[s, "(Intercept)"]= if(!is.null(coefs["(Intercept)"])) coefs["(Intercept)"] else NA
+  coef_store[s, "axis"]= if(!is.null(coefs["axis"])) coefs["axis"] else NA
+
+  for(tr in traits_names){
+    trait_name= paste0("trait_", tr)
+    int_name= paste0("int_", tr)
+    inter_term= paste0("I_", tr, "_axis")
+    coef_store[s, trait_name]= if(!is.null(coefs[tr])) coefs[tr] else NA
+    coef_store[s, int_name]= if(!is.null(coefs[inter_term])) coefs[inter_term] else NA
+  }
+}
+
+# Summarize posterior coefficients
+summ= data.frame(
+  term = coef_names,
+  mean = apply(coef_store, 2, mean, na.rm = TRUE),
+  median = apply(coef_store, 2, median, na.rm = TRUE),
+  ci_lower = apply(coef_store, 2, quantile, probs = 0.025, na.rm = TRUE),
+  ci_upper = apply(coef_store, 2, quantile, probs = 0.975, na.rm = TRUE),
+  p_pos = apply(coef_store, 2, function(x) mean(x > 0, na.rm = TRUE)),
+  p_neg = apply(coef_store, 2, function(x) mean(x < 0, na.rm = TRUE)),
+  stringsAsFactors = FALSE
+)
+
+summ$postsup= apply(coef_store, 2, function(x){
+  ps= mean(x > 0, na.rm = TRUE)
+  if(is.na(ps)) return(NA_real_)
+  if(ps < 0.5) ps <- 1 - ps
+  return(ps)
+})
+
+print(summ)#Table S7
+```
+
+
+```{r, echo=FALSE}
