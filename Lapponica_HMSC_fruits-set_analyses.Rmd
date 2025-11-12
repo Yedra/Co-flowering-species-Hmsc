@@ -823,7 +823,7 @@ print(summ)#Table S6
 
 ```{r flap, fig.width=6, fig.height=6, dpi=300}
 
-#svg("fitlap.svg", height=6, width=6)
+svg("plots/fitlap.svg", height=6, width=6)
 
 cols= colorRampPalette(c("dodgerblue", "white", "deeppink"))(100)
 
@@ -905,7 +905,7 @@ segments(pp_obs$x, pp_obs$y, pp_pred$x, pp_pred$y,
 #Overlay observed points
 points(pp_obs, col = rgb(0,0,0,0.7), pch = 16, cex = 0.6)
 
-#dev.off()
+dev.off()
 
 ```
 
