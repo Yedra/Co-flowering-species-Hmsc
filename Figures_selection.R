@@ -534,4 +534,7 @@ fig.3= plot.poll + plot.fset +
 
 print(fig.3)
 
-
+ggsave(filename = "plots/fig3.svg", plot = fig.3,                
+  width = 12,                    
+  height = 6,                     
+  dpi = 300)
